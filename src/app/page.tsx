@@ -119,7 +119,7 @@ export default function Home() {
 
           <AnimateOnScroll animation="scale-in" delay={200}>
             <VideoEmbed
-              videoId="dQw4w9WgXcQ"
+              videoId="VnrjSaJ0Mvs"
               title="Impulse Buyer? — Plus Money Talks"
             />
           </AnimateOnScroll>

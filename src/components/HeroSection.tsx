@@ -74,18 +74,6 @@ export default function HeroSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8">
-            {/* Tagline badge */}
-            <div
-              className={`inline-flex items-center gap-2 bg-white/100 backdrop-blur-sm border border-[#961414]/10 rounded-full px-4 py-2 shadow-sm transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
-            >
-              <span className="w-2 h-2 bg-[#961414] rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-[#52080D]">
-                SEC Regulated · Trusted by 100,000+
-              </span>
-            </div>
-
             {/* Title */}
             <h1
               className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-[#52080D] leading-[1.08] tracking-tight transition-all duration-700 delay-100 ${
