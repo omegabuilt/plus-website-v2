@@ -3,6 +3,7 @@ import DownloadCTA from "@/components/DownloadCTA";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import VideoEmbed from "@/components/VideoEmbed";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -258,6 +259,121 @@ export default function Home() {
               </div>
             </AnimateOnScroll>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 sm:py-24 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateOnScroll animation="fade-in-up">
+            <div className="text-center mb-14 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#52080D] mb-4">
+                What Our Users Say
+              </h2>
+              <p className="text-gray-500 text-lg">
+                Hear from investors building wealth with Plus.
+              </p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <AnimateOnScroll animation="fade-in-up" delay={0}>
+              <div className="bg-[#FFF9F9] rounded-2xl p-8 sm:p-10 border border-gray-100 h-full flex flex-col">
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                  &ldquo;I started investing with just GHS 50 on Plus. Six months later, I&apos;ve built a habit of saving every week. The app makes it so easy.&rdquo;
+                </p>
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#961414] flex items-center justify-center text-white font-bold text-sm">
+                    AK
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#52080D] text-sm">Ama K.</p>
+                    <p className="text-gray-400 text-xs">Accra, Ghana</p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in-up" delay={150}>
+              <div className="bg-[#FFF9F9] rounded-2xl p-8 sm:p-10 border border-gray-100 h-full flex flex-col">
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                  &ldquo;Being able to buy US stocks from Ghana is a game-changer. I own shares in Apple and Tesla now — something I never thought possible.&rdquo;
+                </p>
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#52080D] flex items-center justify-center text-white font-bold text-sm">
+                    KM
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#52080D] text-sm">Kwame M.</p>
+                    <p className="text-gray-400 text-xs">Kumasi, Ghana</p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in-up" delay={300}>
+              <div className="bg-[#FFF9F9] rounded-2xl p-8 sm:p-10 border border-gray-100 h-full flex flex-col">
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <svg key={s} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p className="text-gray-600 text-base leading-relaxed mb-6 flex-grow">
+                  &ldquo;T-Bills on Plus give me peace of mind. Government-backed, great rates, and I can track everything from my phone. Highly recommend.&rdquo;
+                </p>
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#961414] flex items-center justify-center text-white font-bold text-sm">
+                    EA
+                  </div>
+                  <div>
+                    <p className="font-bold text-[#52080D] text-sm">Efua A.</p>
+                    <p className="text-gray-400 text-xs">Takoradi, Ghana</p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+
+          {/* SEC Badge */}
+          <AnimateOnScroll animation="fade-in-up" delay={200}>
+            <div className="mt-16 flex flex-col items-center">
+              <Image
+                src="/images/sec-ghana-logo.svg"
+                alt="Securities and Exchange Commission Ghana"
+                width={80}
+                height={80}
+                className="mb-3 opacity-60"
+              />
+              <p className="text-gray-400 text-sm text-center max-w-md">
+                Licensed and regulated by the Securities and Exchange Commission, Ghana
+              </p>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 

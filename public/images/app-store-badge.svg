@@ -1,0 +1,14 @@
+<svg viewBox="0 0 180 53" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black rounded rectangle background -->
+  <rect width="180" height="53" rx="6" ry="6" fill="#000000"/>
+
+  <!-- Apple logo -->
+  <g transform="translate(10, 9)">
+    <!-- Apple silhouette -->
+    <path d="M 20.5 8C 18.5 8 17 9.5 17 11.5C 17 13.8 18.8 15.5 21 15.5C 23.2 15.5 25 13.8 25 11.5C 25 9.5 23.5 8 21.5 8C 21 8 20.7 8 20.5 8M 20.5 0C 17.5 0 15 2.5 15 5.5C 15 7.2 15.7 8.8 16.8 10C 16.2 10.5 15.5 11 14.5 11C 12.5 11 11 12.5 11 14.5C 11 16.5 12.5 18 14.5 18C 14.8 18 15.2 18 15.5 17.9C 16.5 19.5 18.3 20.5 20.5 20.5C 23.5 20.5 26 18 26 15C 26 13.3 25.3 11.8 24.2 10.7C 25.3 9.5 26 7.8 26 5.8C 26 2.8 23.5 0 20.5 0Z" fill="white"/>
+  </g>
+
+  <!-- Text -->
+  <text x="40" y="18" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="300" fill="white" letter-spacing="0.5">Download on the</text>
+  <text x="40" y="32" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="white" letter-spacing="-0.5">App Store</text>
+</svg>
