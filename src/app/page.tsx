@@ -46,10 +46,6 @@ export default function Home() {
                   <p className="text-gray-500 text-base leading-relaxed">
                     Grow with trusted funds from Stanbic, IC, and Databank. Start with GHS 10.
                   </p>
-                  <div className="mt-6 flex items-center text-[#961414] font-semibold text-sm group-hover:gap-3 gap-2 transition-all">
-                    <span>Explore</span>
-                    <span className="text-lg">→</span>
-                  </div>
                 </div>
               </Link>
             </AnimateOnScroll>
@@ -69,10 +65,6 @@ export default function Home() {
                   <p className="text-gray-500 text-base leading-relaxed">
                     Government-backed. Safe, reliable returns with flexible terms.
                   </p>
-                  <div className="mt-6 flex items-center text-[#961414] font-semibold text-sm group-hover:gap-3 gap-2 transition-all">
-                    <span>Explore</span>
-                    <span className="text-lg">→</span>
-                  </div>
                 </div>
               </Link>
             </AnimateOnScroll>
@@ -92,10 +84,6 @@ export default function Home() {
                   <p className="text-gray-500 text-base leading-relaxed">
                     Own Apple, Google, Tesla, and 4,000+ more. Powered by Bamboo.
                   </p>
-                  <div className="mt-6 flex items-center text-[#961414] font-semibold text-sm group-hover:gap-3 gap-2 transition-all">
-                    <span>Explore</span>
-                    <span className="text-lg">→</span>
-                  </div>
                 </div>
               </Link>
             </AnimateOnScroll>

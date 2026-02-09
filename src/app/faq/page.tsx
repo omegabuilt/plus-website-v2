@@ -45,7 +45,7 @@ const faqItems: FAQItem[] = [
     category: 'Investing',
     question: 'How much do I need to start?',
     answer:
-      'You can start investing with as little as GHS 10 for mutual funds. US stocks allow you to start with as little as $1 through fractional shares.',
+      'You can start investing with as little as GHS 10 for mutual funds. US stocks allow you to start with as little as $10 through fractional shares.',
   },
   {
     id: 'investing-3',

@@ -1,0 +1,10 @@
+# Plus Investment App — robots.txt
+# https://www.plusapp.online
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://www.plusapp.online/sitemap.xml
