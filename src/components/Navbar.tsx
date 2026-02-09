@@ -1,24 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
-const PLAY_STORE = "https://play.google.com/store/apps/details?id=online.plusapp.android&pcampaignid=web_share";
-const APP_STORE = "https://apps.apple.com/us/app/plus-invest/id6444616895";
+import { useUTM } from "@/lib/useUTM";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [storeUrl, setStoreUrl] = useState(PLAY_STORE);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const ua = navigator.userAgent || "";
-    if (/iPhone|iPad|iPod/i.test(ua)) {
-      setStoreUrl(APP_STORE);
-    }
-  }, []);
+  const { smartUrl, onDownloadClick } = useUTM();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -69,9 +60,10 @@ export default function Navbar() {
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center">
             <a
-              href={storeUrl}
+              href={smartUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => onDownloadClick("google_play")}
               className="btn-burgundy px-6 py-2 rounded-lg font-semibold text-sm lg:text-base inline-block"
             >
               Download App
@@ -81,9 +73,10 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
             <a
-              href={storeUrl}
+              href={smartUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => onDownloadClick("google_play")}
               className="btn-burgundy px-4 py-2 rounded-lg font-semibold text-sm inline-block"
             >
               Download

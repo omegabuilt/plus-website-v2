@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useUTM } from "@/lib/useUTM";
 
 export default function DownloadCTA() {
+  const { playStoreUrl, appStoreUrl, onDownloadClick } = useUTM();
+
   return (
     <section className="bg-burgundy py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -17,9 +22,10 @@ export default function DownloadCTA() {
         {/* App Store Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
           <a
-            href="https://play.google.com/store/apps/details?id=online.plusapp.android&pcampaignid=web_share"
+            href={playStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => onDownloadClick("google_play")}
             className="hover:scale-105 transition-transform duration-300"
           >
             <Image
@@ -32,9 +38,10 @@ export default function DownloadCTA() {
           </a>
 
           <a
-            href="https://apps.apple.com/us/app/plus-invest/id6444616895"
+            href={appStoreUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => onDownloadClick("app_store")}
             className="hover:scale-105 transition-transform duration-300"
           >
             <Image

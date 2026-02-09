@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
 import DownloadCTA from "@/components/DownloadCTA";
 
-export const metadata = {
-  title: "About Plus | Building Wealth in Ghana",
-  description:
-    "Learn about Plus Investment App, built by 10th Capital Investments Limited. SEC-regulated, transparent, and designed for Ghanaians.",
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "10th Capital Investments Limited — the team behind Plus. SEC-regulated, based in Accra, Ghana. Making investing accessible to every Ghanaian.",
 };
 
 export default function AboutPage() {

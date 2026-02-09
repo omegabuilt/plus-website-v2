@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import DownloadCTA from '@/components/DownloadCTA';
+
+export const metadata: Metadata = {
+  title: "Learn",
+  description: "Financial education and investment tips from Plus. Follow us on YouTube, Instagram, and TikTok for guides and market updates.",
+};
 
 export default function LearnPage() {
   return (

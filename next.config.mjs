@@ -38,17 +38,17 @@ const nextConfig = {
               // Only allow resources from your own origin by default
               "default-src 'self'",
               // Scripts: self + inline (Next.js needs it) + eval (Next.js dev)
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://cdnjs.cloudflare.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
               // Styles: self + inline (Tailwind/Next.js needs it) + Google Fonts
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               // Images: self + data URIs + YouTube thumbnails
-              "img-src 'self' data: https://img.youtube.com",
+              "img-src 'self' data: https://img.youtube.com https://www.googletagmanager.com https://www.google-analytics.com",
               // Fonts: self + Google Fonts CDN
               "font-src 'self' https://fonts.gstatic.com",
               // Frames: only YouTube embeds
               "frame-src https://www.youtube.com",
               // Connections: self + YouTube + Google analytics (if added later)
-              "connect-src 'self' https://www.youtube.com",
+              "connect-src 'self' https://www.youtube.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com",
               // Block all object/embed elements
               "object-src 'none'",
               // Restrict base URI to self

@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import DownloadCTA from "@/components/DownloadCTA";
+
+export const metadata: Metadata = {
+  title: "Investment Products",
+  description: "Explore SEC-regulated mutual funds, government-backed treasury bills, and 4,000+ US stocks. Start investing from Ghana with as little as GHS 10.",
+};
 
 export default function ProductsPage() {
   return (

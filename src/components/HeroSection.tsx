@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useUTM } from "@/lib/useUTM";
 
 interface HeroSectionProps {
   title: string;
@@ -15,6 +16,7 @@ export default function HeroSection({
   showAppButtons = true,
 }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
+  const { playStoreUrl, appStoreUrl, onDownloadClick } = useUTM();
 
   useEffect(() => {
     setMounted(true);
@@ -115,9 +117,10 @@ export default function HeroSection({
                 }`}
               >
                 <a
-                  href="https://play.google.com/store/apps/details?id=online.plusapp.android&pcampaignid=web_share"
+                  href={playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => onDownloadClick("google_play")}
                   className="hover:scale-105 transition-transform duration-300"
                 >
                   <Image
@@ -130,9 +133,10 @@ export default function HeroSection({
                 </a>
 
                 <a
-                  href="https://apps.apple.com/us/app/plus-invest/id6444616895"
+                  href={appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => onDownloadClick("app_store")}
                   className="hover:scale-105 transition-transform duration-300"
                 >
                   <Image
