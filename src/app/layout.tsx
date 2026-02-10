@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "10th Capital Investments",
     "Stanbic Cash Trust",
     "IC Cash Trust",
-    "Databank Mfund",
+    "Databank MFund II",
     "fractional shares Ghana",
     "mobile investing Ghana",
   ],

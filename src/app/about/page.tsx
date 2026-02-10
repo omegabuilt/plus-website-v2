@@ -134,7 +134,7 @@ export default function AboutPage() {
                 Security First
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Encrypted data, biometric login, and SMS alerts for every transaction.
+                Built with your security and privacy in mind.
               </p>
             </div>
           </div>

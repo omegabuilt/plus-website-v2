@@ -58,7 +58,7 @@ export default function ProductsPage() {
             {/* Databank Mfund II Card */}
             <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-xl font-bold text-burgundy mb-4">
-                Databank MFund
+                Databank MFund II
               </h3>
               <p className="text-gray-700 mb-8 leading-relaxed">
                 From Ghana&apos;s widest range of mutual funds, professionally managed by Databank Asset Management Services.
