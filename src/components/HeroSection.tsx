@@ -1,8 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import { useUTM } from "@/lib/useUTM";
+
+const appScreens = [
+  "/images/app-screen-1.jpg",
+  "/images/app-screen-2.jpg",
+  "/images/app-screen-3.jpg",
+];
 
 interface HeroSectionProps {
   title: string;
@@ -16,11 +22,22 @@ export default function HeroSection({
   showAppButtons = true,
 }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
+  const [currentScreen, setCurrentScreen] = useState(0);
   const { playStoreUrl, appStoreUrl, onDownloadClick } = useUTM();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Auto-advance carousel
+  const nextScreen = useCallback(() => {
+    setCurrentScreen((prev) => (prev + 1) % appScreens.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextScreen, 3500);
+    return () => clearInterval(interval);
+  }, [nextScreen]);
 
   // Split title for gradient highlight on second line
   const titleParts = title.split(" from ");
@@ -219,73 +236,35 @@ export default function HeroSection({
                 <div className="w-[260px] sm:w-[270px] mx-auto">
                   {/* Phone frame */}
                   <div className="bg-[#1a1a1a] rounded-[40px] p-[10px] shadow-2xl" style={{ boxShadow: "0 40px 80px rgba(82,8,13,0.15), 0 0 0 1px rgba(255,255,255,0.05) inset" }}>
-                    {/* Screen */}
-                    <div className="bg-gradient-to-b from-[#961414] to-[#52080D] rounded-[32px] overflow-hidden" style={{ aspectRatio: "9/19" }}>
-                      {/* Status bar */}
-                      <div className="flex justify-between items-center px-5 pt-3 pb-2">
-                        <span className="text-white/80 text-[10px] font-medium">9:41</span>
-                        <div className="flex gap-1">
-                          <div className="w-3 h-2 bg-white/50 rounded-sm" />
-                          <div className="w-3 h-2 bg-white/50 rounded-sm" />
-                          <div className="w-4 h-2 bg-white/70 rounded-sm" />
-                        </div>
-                      </div>
-
-                      {/* App content */}
-                      <div className="px-5 pt-4">
-                        <p className="text-white/50 text-[10px]">Total Portfolio</p>
-                        <p className="text-white text-[26px] font-extrabold mt-1">GHS 12,450</p>
-                        <div className="inline-flex items-center gap-1 mt-1.5 bg-green-400/15 rounded-md px-2 py-0.5">
-                          <svg className="w-2.5 h-2.5" fill="none" stroke="#4ade80" strokeWidth={3} viewBox="0 0 24 24">
-                            <path d="M5 10l7-7 7 7" />
-                          </svg>
-                          <span className="text-green-400 text-[11px] font-semibold">+12.4%</span>
-                        </div>
-
-                        {/* Chart bars */}
-                        <div className="mt-4 h-16 flex items-end gap-[3px]">
-                          {[40, 55, 35, 60, 50, 70, 65, 80, 75, 90, 85, 95].map((h, i) => (
-                            <div
-                              key={i}
-                              className="flex-1 rounded-t-sm"
-                              style={{
-                                height: `${h}%`,
-                                background: i % 2 === 0 ? "rgba(255,255,255,0.2)" : "rgba(253,220,204,0.5)",
-                              }}
+                    {/* Screen with carousel */}
+                    <div className="rounded-[32px] overflow-hidden relative bg-white" style={{ aspectRatio: "9/19.5" }}>
+                      <div
+                        className="flex transition-transform duration-700 ease-in-out h-full"
+                        style={{ transform: `translateX(-${currentScreen * 100}%)` }}
+                      >
+                        {appScreens.map((src, i) => (
+                          <div key={i} className="w-full h-full flex-shrink-0">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={src}
+                              alt={`Plus app screen ${i + 1}`}
+                              className="w-full h-full object-cover object-top"
                             />
-                          ))}
-                        </div>
-
-                        {/* Product cards */}
-                        <div className="mt-5 space-y-2">
-                          <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">Mutual Funds</p>
-                                <p className="text-white/40 text-[9px]">Stanbic Cash Trust</p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">+8.2%</p>
-                            </div>
                           </div>
-                          <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">T-Bills</p>
-                                <p className="text-white/40 text-[9px]">91-day Bill</p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">+29.5%</p>
-                            </div>
-                          </div>
-                          <div className="bg-white/10 rounded-xl p-2.5 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">US Stocks</p>
-                                <p className="text-white/40 text-[9px]">Apple Inc.</p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">+15.3%</p>
-                            </div>
-                          </div>
-                        </div>
+                        ))}
+                      </div>
+                      {/* Carousel dots */}
+                      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+                        {appScreens.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setCurrentScreen(i)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              i === currentScreen ? "bg-[#961414] w-4" : "bg-gray-300"
+                            }`}
+                            aria-label={`Go to screen ${i + 1}`}
+                          />
+                        ))}
                       </div>
                     </div>
                   </div>
