@@ -328,12 +328,13 @@ export default function Home() {
           {/* SEC Badge */}
           <AnimateOnScroll animation="fade-in-up" delay={200}>
             <div className="mt-16 flex flex-col items-center">
-              <Image
-                src="/images/sec-ghana-logo.svg"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/sec-ghana-logo.png"
                 alt="Securities and Exchange Commission Ghana"
                 width={80}
-                height={80}
-                className="mb-3 opacity-60"
+                height={67}
+                className="mb-3 opacity-70"
               />
               <p className="text-gray-400 text-sm text-center max-w-md">
                 Licensed and regulated by the Securities and Exchange Commission, Ghana
