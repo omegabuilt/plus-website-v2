@@ -154,7 +154,7 @@ export default function ProductsPage() {
                   Real Ownership
                 </h3>
                 <p className="text-gray-700">
-                  You own the actual stocks, not derivatives.
+                  You own the actual shares.
                 </p>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function ProductsPage() {
                   Fractional Shares
                 </h3>
                 <p className="text-gray-700">
-                  Buy a piece of any stock — no need to buy a whole share.
+                  You can buy a fraction of any stock.
                 </p>
               </div>
             </div>
