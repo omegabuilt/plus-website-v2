@@ -216,20 +216,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Transparent Fees Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg p-8 sm:p-12 border border-gray-200 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-dark-burgundy mb-4">
-              Transparent Fees
-            </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Fees are per transaction, competitive, and always shown before you confirm. No hidden charges.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Download CTA */}
       <DownloadCTA />
     </div>
