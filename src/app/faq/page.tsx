@@ -44,7 +44,7 @@ const faqItems: FAQItem[] = [
     category: 'Investing',
     question: 'What can I invest in?',
     answer:
-      'You can invest in Mutual Funds (Stanbic Cash Trust, IC Cash Trust, Databank Mfund II), Government Treasury Bills, and US Stocks (4,000+ companies, powered by Bamboo).',
+      'You can invest in Mutual Funds (Stanbic Cash Trust, IC Liquidity Fund, Databank MFund), Government Treasury Bills, and US Stocks (4,000+ companies, powered by Bamboo).',
   },
   {
     id: 'investing-2',

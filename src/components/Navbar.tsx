@@ -16,7 +16,7 @@ export default function Navbar() {
     { href: "/products", label: "Products" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
-    { href: "/learn", label: "Learn" },
+    // { href: "/learn", label: "Learn" }, // Hidden until Learn section is developed
   ];
 
   const isActive = (href: string) => {
@@ -30,16 +30,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
-              src="/images/logo-light.jpg"
+              src="/images/plus-logo-header.png"
               alt="Plus Investment App"
-              width={40}
+              width={120}
               height={40}
               priority
               className="h-10 w-auto"
             />
-            <span className="ml-2 text-lg font-bold text-burgundy hidden sm:inline">
-              Plus
-            </span>
           </Link>
 
           {/* Desktop Navigation */}

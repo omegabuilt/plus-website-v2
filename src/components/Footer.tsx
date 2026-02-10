@@ -13,13 +13,12 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Image
-                src="/images/logo-dark.jpg"
+                src="/images/plus-logo-white.png"
                 alt="Plus Investment App"
-                width={40}
+                width={120}
                 height={40}
-                className="h-10 w-auto"
+                className="h-10 w-auto brightness-0 invert"
               />
-              <span className="ml-2 text-lg font-bold">Plus</span>
             </div>
             <p className="text-white/80 text-sm leading-relaxed">
               All your investment needs in one app
@@ -116,14 +115,7 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/learn"
-                  className="text-white/70 hover:text-white transition-colors text-sm"
-                >
-                  Learn
-                </Link>
-              </li>
+              {/* Learn link hidden until section is developed */}
               <li>
                 <a
                   href="mailto:support@plusapp.online"
@@ -162,14 +154,6 @@ export default function Footer() {
                 >
                   Terms of Service
                 </Link>
-              </li>
-              <li>
-                <a
-                  href="#sec-regulated"
-                  className="text-white/70 hover:text-white transition-colors text-sm"
-                >
-                  SEC Regulated
-                </a>
               </li>
             </ul>
           </div>

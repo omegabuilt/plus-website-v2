@@ -29,7 +29,7 @@ export default function ProductsPage() {
               Mutual Funds
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl">
-              Access trusted mutual funds from leading Ghanaian institutions. Your money is managed by professional fund managers.
+              Access trusted mutual funds from our partners. Your money is managed by professional fund managers.
             </p>
           </div>
 
@@ -41,27 +41,27 @@ export default function ProductsPage() {
                 Stanbic Cash Trust
               </h3>
               <p className="text-gray-700 mb-8 leading-relaxed">
-                A money market fund by Stanbic Investment Management. Low risk, easy access to your money.
+                One of Ghana&apos;s largest fund managers with world-class money management expertise, licensed by the SEC.
               </p>
             </div>
 
             {/* IC Cash Trust Card */}
             <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-xl font-bold text-burgundy mb-4">
-                IC Cash Trust
+                IC Liquidity Fund
               </h3>
               <p className="text-gray-700 mb-8 leading-relaxed">
-                Managed by IC Asset Managers. A cash trust fund designed for capital preservation.
+                A licensed money market fund investing in highly liquid, Government of Ghana-backed assets for short-term income.
               </p>
             </div>
 
             {/* Databank Mfund II Card */}
             <div className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
               <h3 className="text-xl font-bold text-burgundy mb-4">
-                Databank Mfund II
+                Databank MFund
               </h3>
               <p className="text-gray-700 mb-8 leading-relaxed">
-                A Databank fund accessible directly from your phone. Professional management, easy monitoring.
+                From Ghana&apos;s widest range of mutual funds, professionally managed by Databank Asset Management Services.
               </p>
             </div>
           </div>

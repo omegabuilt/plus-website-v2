@@ -159,12 +159,12 @@ export default function HeroSection({
               <div className="flex items-center gap-2.5">
                 <div className="w-10 h-10 rounded-xl bg-[#FEF0E8] flex items-center justify-center">
                   <svg className="w-[18px] h-[18px]" fill="none" stroke="#961414" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-[#52080D]">SEC Licensed</p>
-                  <p className="text-[11px] text-gray-400">Ghana SEC</p>
+                  <p className="text-sm font-bold text-[#52080D]">12K+</p>
+                  <p className="text-[11px] text-gray-400">Transactions / Week</p>
                 </div>
               </div>
 
@@ -177,6 +177,18 @@ export default function HeroSection({
                 <div>
                   <p className="text-sm font-bold text-[#52080D]">100K+</p>
                   <p className="text-[11px] text-gray-400">Users</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#EBF4FB] flex items-center justify-center">
+                  <svg className="w-[18px] h-[18px]" fill="none" stroke="#3B82C4" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#52080D]">24/7</p>
+                  <p className="text-[11px] text-gray-400">Access</p>
                 </div>
               </div>
 

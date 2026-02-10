@@ -113,9 +113,7 @@ export default function AboutPage() {
                 Institutional Products
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                We partner with established financial institutions like Stanbic, IC
-                Asset Managers, and Databank. These are real, regulated investment
-                products — not experimental or untested offerings.
+                We partner with Stanbic, IC Asset Managers, and Databank — all SEC-licensed fund managers offering real, regulated investment products.
               </p>
             </div>
 
@@ -271,10 +269,14 @@ export default function AboutPage() {
                     <span className="sr-only">TikTok</span>
                     <svg
                       className="w-6 h-6"
-                      fill="currentColor"
                       viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 1.94 2.89 2.89 0 0 1 5.66-1.93V9.4a6.84 6.84 0 0 0-5.66-5.63V2a10.658 10.658 0 0 0 10.77 10.72V9.63a3.72 3.72 0 0 0 .6-.05v-3.36a4.7 4.7 0 0 1-.6.04z" />
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                     </svg>
                   </a>
                 </div>
