@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "SEC regulated investment",
     "10th Capital Investments",
     "Stanbic Cash Trust",
-    "IC Cash Trust",
+    "IC Liquidity Fund",
     "Databank MFund II",
     "fractional shares Ghana",
     "mobile investing Ghana",

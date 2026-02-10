@@ -78,7 +78,7 @@ export default function Home() {
                     US Stocks
                   </h3>
                   <p className="text-gray-500 text-base leading-relaxed">
-                    Own Apple, Google, Tesla, and 4,000+ more. Powered by Bamboo.
+                    Own Apple, Google, Tesla, and 4,000+ more. Start with $10.
                   </p>
                 </div>
               </Link>
