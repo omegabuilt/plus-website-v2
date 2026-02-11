@@ -22,7 +22,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Mutual Funds Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="mutual-funds" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-burgundy mb-4">
@@ -69,7 +69,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Treasury Bills Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+      <section id="treasury-bills" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-burgundy mb-4">
@@ -128,7 +128,7 @@ export default function ProductsPage() {
       </section>
 
       {/* US Stocks Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="us-stocks" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-dark-burgundy mb-4">

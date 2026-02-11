@@ -146,6 +146,7 @@ export default function HeroSection({
                     width={180}
                     height={53}
                     className="h-[53px] w-auto"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </a>
 
@@ -162,6 +163,7 @@ export default function HeroSection({
                     width={180}
                     height={53}
                     className="h-[53px] w-auto"
+                    style={{ width: "auto", height: "auto" }}
                   />
                 </a>
               </div>

@@ -3,9 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install
-        # Flag known vulnerabilities (non-blocking — logs warnings but doesn't fail the build)
-        - npm audit --audit-level=high || true
+        - npm ci
     build:
       commands:
         - npm run build
