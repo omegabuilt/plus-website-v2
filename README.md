@@ -19,37 +19,72 @@ The official marketing website for **Plus**, Ghana's all-in-one investment app b
 | `/about` | Company story, trust pillars, team stats |
 | `/faq` | Accordion FAQ |
 | `/learn` | Educational resources and social links |
+| `/terms` | Terms & Conditions (fetched from API) |
+| `/privacy` | Privacy Policy (fetched from API) |
 
 ## Getting Started
 
+### 1. Install dependencies
+
 ```bash
-# Install dependencies
 npm install
+```
 
-# Run development server
+### 2. Set up environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+API_BASE_URL=https://staging-api.10thcapital.investments/v2
+NEXT_PUBLIC_GTM_ID=your-gtm-id
+```
+
+| Variable | Required | Description |
+|---|---|---|
+| `API_BASE_URL` | Yes | Backend API base URL. Used server-side to fetch terms and privacy content. |
+| `NEXT_PUBLIC_GTM_ID` | No | Google Tag Manager container ID for analytics. |
+
+> **Note:** `.env.local` is gitignored. For production, set `API_BASE_URL=https://api.10thcapital.investments/v2` in your hosting platform's environment variables.
+
+### 3. Run the dev server
+
+```bash
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm run start
 ```
 
 The dev server runs at [http://localhost:3000](http://localhost:3000).
+
+### Build for production
+
+```bash
+npm run build
+npm run start
+```
 
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── page.tsx          # Homepage
-│   ├── about/page.tsx
-│   ├── faq/page.tsx
-│   ├── learn/page.tsx
-│   ├── products/page.tsx
-│   ├── globals.css       # Global styles + animation keyframes
-│   └── layout.tsx        # Root layout (Navbar + Footer)
+│   ├── layout.tsx           # Root layout (Navbar + Footer)
+│   ├── globals.css          # Global styles + animation keyframes
+│   ├── page.tsx             # Homepage
+│   ├── about/
+│   │   ├── layout.tsx       # Metadata
+│   │   └── page.tsx
+│   ├── faq/
+│   │   ├── layout.tsx       # Metadata
+│   │   └── page.tsx
+│   ├── learn/
+│   │   └── page.tsx
+│   ├── products/
+│   │   └── page.tsx
+│   ├── terms/
+│   │   ├── layout.tsx       # Metadata
+│   │   └── page.tsx         # Server-side API fetch
+│   └── privacy/
+│       ├── layout.tsx       # Metadata
+│       └── page.tsx         # Server-side API fetch
 ├── components/
 │   ├── Navbar.tsx
 │   ├── Footer.tsx
@@ -58,10 +93,21 @@ src/
 │   ├── AnimateOnScroll.tsx
 │   ├── AnimatedCounter.tsx
 │   └── VideoEmbed.tsx
+└── lib/
+    ├── api.ts               # Backend API fetch utilities
+    ├── utm.ts               # UTM parameter utilities
+    └── useUTM.ts            # React hook for UTM tracking
 public/
+├── sitemap.xml
+├── robots.txt
 └── images/
-    ├── logo-light.jpg    # Burgundy logo on white
-    └── logo-dark.jpg     # White logo on burgundy
+    ├── plus-logo-header.png # Header logo
+    ├── plus-logo-white.png  # Footer logo (white)
+    ├── og-image.jpg         # Open Graph image
+    ├── sec-ghana-logo.svg   # SEC Ghana logo
+    ├── app-screen-*.jpg     # App screenshots for hero carousel
+    ├── app-store-badge.svg
+    └── google-play-badge.svg
 ```
 
 ## Deployment

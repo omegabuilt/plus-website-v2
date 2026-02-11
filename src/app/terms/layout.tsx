@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: "Terms and Conditions",
   description:
-    "Terms and Conditions for using Plus Investment App by 10th Capital Investments Limited.",
+    "Terms and Conditions",
 };
 
 export default function TermsLayout({
