@@ -2,19 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useUTM } from "@/lib/useUTM";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { smartUrl, onDownloadClick } = useUTM();
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
-    { href: "/learn", label: "Learn" },
+    // { href: "/learn", label: "Learn" }, // Hidden until Learn section is developed
   ];
 
   const isActive = (href: string) => {
@@ -27,17 +28,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
-            <Image
-              src="/images/logo-light.jpg"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/plus-logo-header.png"
               alt="Plus Investment App"
-              width={40}
+              width={120}
               height={40}
-              priority
-              className="h-10 w-auto"
+              className="h-20 w-auto"
             />
-            <span className="ml-2 text-lg font-bold text-burgundy hidden sm:inline">
-              Plus
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,16 +55,28 @@ export default function Navbar() {
 
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center">
-            <button className="btn-burgundy px-6 py-2 rounded-lg font-semibold text-sm lg:text-base">
+            <a
+              href={smartUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onDownloadClick("google_play")}
+              className="btn-burgundy px-6 py-2 rounded-lg font-semibold text-sm lg:text-base inline-block"
+            >
               Download App
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
-            <button className="btn-burgundy px-4 py-2 rounded-lg font-semibold text-sm">
+            <a
+              href={smartUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => onDownloadClick("google_play")}
+              className="btn-burgundy px-4 py-2 rounded-lg font-semibold text-sm inline-block"
+            >
               Download
-            </button>
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-light-burgundy focus:outline-none transition-colors"

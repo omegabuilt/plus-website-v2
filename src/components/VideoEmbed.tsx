@@ -54,12 +54,6 @@ export default function VideoEmbed({
             </div>
           </div>
 
-          {/* Title overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/60 to-transparent">
-            <p className="text-white font-semibold text-sm sm:text-base">
-              {title}
-            </p>
-          </div>
         </button>
       )}
     </div>

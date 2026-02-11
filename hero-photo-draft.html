@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plus Hero – Photo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f5f5f5; }
+
+  .label {
+    text-align: center;
+    padding: 32px 16px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #961414;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .label span { color: #888; font-weight: 400; font-size: 12px; display: block; margin-top: 4px; text-transform: none; letter-spacing: 0; }
+
+  .divider {
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 2px dashed #ddd;
+  }
+
+  /* ===== SHARED HERO STYLES ===== */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(145deg, #FFF9F9 0%, #fff 20%, #FEF0E8 40%, #F5F0FD 65%, #EDFAF3 85%, #EBF4FB 100%);
+  }
+
+  /* Pastel blobs */
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(90px);
+  }
+  .blob-1 { top: -80px; right: -60px; width: 450px; height: 450px; background: radial-gradient(circle, #FDDCCC, transparent 70%); opacity: 0.4; animation: bfloat 7s ease-in-out infinite; }
+  .blob-2 { bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, #E8DAFB, transparent 70%); opacity: 0.4; animation: bfloat 9s ease-in-out infinite 1s; }
+  .blob-3 { top: 30%; left: 50%; width: 350px; height: 350px; background: radial-gradient(circle, #C9F0DC, transparent 70%); opacity: 0.3; animation: bfloat 10s ease-in-out infinite 2s; }
+
+  @keyframes bfloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: #52080D;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h1 .gradient {
+    background: linear-gradient(135deg, #961414 0%, #C44B4B 50%, #B8578A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    color: #888;
+    line-height: 1.7;
+    max-width: 420px;
+    margin-top: 16px;
+  }
+
+  .badges { display: flex; gap: 12px; margin-top: 24px; }
+  .badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .badge-btn:hover { transform: scale(1.04); }
+  .badge-btn small { font-size: 9px; font-weight: 400; display: block; color: #aaa; }
+
+  /* Trust bar - no rating */
+  .trust-bar {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(150, 20, 20, 0.1);
+  }
+  .trust-item { display: flex; align-items: center; gap: 10px; }
+  .trust-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .trust-label p { font-size: 13px; font-weight: 700; color: #52080D; }
+  .trust-label span { font-size: 10px; color: #aaa; }
+
+  /* ===== CONCEPT A: Person photo replaces phone ===== */
+  .photo-container-a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .photo-frame-a {
+    position: relative;
+    width: 380px;
+    height: 480px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(82, 8, 13, 0.12), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  }
+  .photo-frame-a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Subtle pastel overlay on photo */
+  .photo-frame-a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(253,220,204,0.15), transparent 40%, rgba(232,218,251,0.12));
+    pointer-events: none;
+  }
+
+  /* Floating cards (reused) */
+  .float-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+    animation: bfloat 5s ease-in-out infinite;
+  }
+  .float-card .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .float-card .fc-title { font-size: 10px; font-weight: 700; color: #333; }
+  .float-card .fc-sub { font-size: 9px; color: #22c55e; font-weight: 600; }
+
+  .fc-1 { left: -40px; top: 25%; animation-delay: 0.5s; }
+  .fc-2 { right: -40px; bottom: 30%; animation-delay: 1.5s; }
+  .fc-3 { right: 10px; top: -16px; animation-delay: 0.8s; }
+
+  /* ===== CONCEPT B: Photo + phone side by side ===== */
+  .right-combo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-circle {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(253,220,204,0.5);
+    box-shadow: 0 20px 60px rgba(82,8,13,0.1);
+    position: relative;
+    z-index: 1;
+  }
+  .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mini-phone {
+    position: absolute;
+    right: -10px;
+    bottom: 10%;
+    width: 140px;
+    z-index: 3;
+    animation: bfloat 5s ease-in-out infinite;
+  }
+  .mini-phone-frame {
+    background: #1a1a1a;
+    border-radius: 22px;
+    padding: 6px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+  .mini-screen {
+    background: linear-gradient(180deg, #961414, #52080D);
+    border-radius: 18px;
+    padding: 12px 10px;
+    aspect-ratio: 9/19;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  .mini-screen .amt { font-size: 14px; font-weight: 800; }
+  .mini-screen .gain { font-size: 9px; color: #4ade80; margin-top: 4px; }
+
+  /* ===== CONCEPT C: Full-width photo behind with text overlay ===== */
+  .hero-c {
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-c-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-c-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-c-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      rgba(255,249,249,0.92) 0%,
+      rgba(254,240,232,0.85) 30%,
+      rgba(245,240,253,0.7) 60%,
+      rgba(237,250,243,0.5) 80%,
+      rgba(235,244,251,0.3) 100%);
+  }
+  .hero-c .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .photo-peek {
+    position: relative;
+    width: 360px;
+    height: 460px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(82,8,13,0.15);
+  }
+  .photo-peek img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Pastel border glow */
+  .photo-peek::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 30px;
+    background: linear-gradient(160deg, #FDDCCC, #E8DAFB, #C9F0DC, #CCE5F6);
+    z-index: -1;
+  }
+  .photo-peek::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(82,8,13,0.6), transparent);
+    pointer-events: none;
+  }
+  .photo-peek .overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+    color: #fff;
+  }
+  .photo-peek .overlay-text p { font-size: 12px; font-weight: 600; }
+  .photo-peek .overlay-text span { font-size: 10px; opacity: 0.8; }
+
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .subtitle { margin: 16px auto 0; }
+    .badges { justify-content: center; }
+    .trust-bar { justify-content: center; flex-wrap: wrap; }
+    .photo-frame-a { width: 300px; height: 380px; }
+    .photo-circle { width: 260px; height: 260px; }
+    .photo-peek { width: 280px; height: 360px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================ -->
+<!-- CONCEPT A: Photo replaces phone mockup -->
+<!-- ================================ -->
+<p class="label">Concept A <span>Photo replaces the phone mockup — lifestyle image of a young person smiling with their phone</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner">
+    <div>
+      <h1>
+        Invest smarter<br />
+        <span class="gradient">from Ghana</span>
+      </h1>
+      <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start investing with as little as GHS 10.</p>
+
+      <div class="badges">
+        <a href="#" class="badge-btn">
+          <span>▶</span>
+          <div><small>GET IT ON</small>Google Play</div>
+        </a>
+        <a href="#" class="badge-btn">
+          <span></span>
+          <div><small>Download on the</small>App Store</div>
+        </a>
+      </div>
+
+      <!-- Trust bar — NO rating -->
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+          <div class="trust-label">
+            <p>SEC Licensed</p>
+            <span>Ghana SEC</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+          <div class="trust-label">
+            <p>100K+</p>
+            <span>Users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Lifestyle photo -->
+    <div class="photo-container-a">
+      <div class="photo-frame-a">
+        <!-- Using a placeholder — replace with real photo -->
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop&crop=face" alt="Smiling young woman" />
+      </div>
+
+      <!-- Floating cards on top of photo -->
+      <div class="float-card fc-1">
+        <div class="icon" style="background: #C9F0DC;">✓</div>
+        <div>
+          <p class="fc-title">Investment Made</p>
+          <p class="fc-sub">GHS 500.00</p>
+        </div>
+      </div>
+      <div class="float-card fc-2">
+        <div class="icon" style="background: #FDDCCC;">📈</div>
+        <div>
+          <p class="fc-title">Portfolio Up</p>
+          <p class="fc-sub">+12.4% this month</p>
+        </div>
+      </div>
+      <div class="float-card fc-3">
+        <div class="icon" style="background: #E8DAFB;">💰</div>
+        <div>
+          <p class="fc-title">4,000+ Stocks</p>
+          <p class="fc-sub" style="color: #aaa;">US Market Access</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================ -->
+<!-- CONCEPT B: Circular photo + mini phone -->
+<!-- ================================ -->
+<p class="label">Concept B <span>Circular photo with a small floating phone showing the app — friendly + product focus</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner">
+    <div>
+      <h1>
+        Invest smarter<br />
+        <span class="gradient">from Ghana</span>
+      </h1>
+      <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start investing with as little as GHS 10.</p>
+
+      <div class="badges">
+        <a href="#" class="badge-btn">
+          <span>▶</span>
+          <div><small>GET IT ON</small>Google Play</div>
+        </a>
+        <a href="#" class="badge-btn">
+          <span></span>
+          <div><small>Download on the</small>App Store</div>
+        </a>
+      </div>
+
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+          <div class="trust-label">
+            <p>SEC Licensed</p>
+            <span>Ghana SEC</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+          <div class="trust-label">
+            <p>100K+</p>
+            <span>Users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Circle photo + mini phone -->
+    <div class="right-combo">
+      <div class="photo-circle">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face" alt="Smiling young man" />
+      </div>
+
+      <div class="mini-phone">
+        <div class="mini-phone-frame">
+          <div class="mini-screen">
+            <p style="font-size:8px; opacity:0.6;">Total Portfolio</p>
+            <p class="amt">GHS 12,450</p>
+            <p class="gain">▲ +12.4%</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-card" style="position:absolute; left:-30px; bottom:20%; animation-delay:1s;">
+        <div class="icon" style="background: #C9F0DC;">✓</div>
+        <div>
+          <p class="fc-title">Investment Made</p>
+          <p class="fc-sub">GHS 500.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================ -->
+<!-- CONCEPT C: Photo with pastel border glow + dark overlay text -->
+<!-- ================================ -->
+<p class="label">Concept C <span>Photo with pastel gradient border glow and a subtle dark gradient at bottom with text overlay</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner">
+    <div>
+      <h1>
+        Invest smarter<br />
+        <span class="gradient">from Ghana</span>
+      </h1>
+      <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start investing with as little as GHS 10.</p>
+
+      <div class="badges">
+        <a href="#" class="badge-btn">
+          <span>▶</span>
+          <div><small>GET IT ON</small>Google Play</div>
+        </a>
+        <a href="#" class="badge-btn">
+          <span></span>
+          <div><small>Download on the</small>App Store</div>
+        </a>
+      </div>
+
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+          <div class="trust-label">
+            <p>SEC Licensed</p>
+            <span>Ghana SEC</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+          <div class="trust-label">
+            <p>100K+</p>
+            <span>Users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Photo with pastel glow border -->
+    <div style="display: flex; justify-content: center;">
+      <div class="photo-peek">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=800&fit=crop&crop=face" alt="Confident young professional" />
+        <div class="overlay-text">
+          <p>Join 100,000+ investors</p>
+          <span>Start with GHS 10</span>
+        </div>
+      </div>
+
+      <div class="float-card" style="position:absolute; left:-30px; top:30%; animation-delay:0.5s;">
+        <div class="icon" style="background: #C9F0DC;">✓</div>
+        <div>
+          <p class="fc-title">SEC Regulated</p>
+          <p class="fc-sub" style="color:#aaa;">Licensed in Ghana</p>
+        </div>
+      </div>
+      <div class="float-card" style="position:absolute; right:-30px; bottom:35%; animation-delay:1.2s;">
+        <div class="icon" style="background: #FDDCCC;">📈</div>
+        <div>
+          <p class="fc-title">Portfolio Up</p>
+          <p class="fc-sub">+12.4% this month</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center; padding: 40px 20px; color: #888; font-size: 13px;">
+  <p><strong>Note:</strong> Stock photos are placeholders. Replace with actual Plus team/user photos for the final version.</p>
+  <p style="margin-top:8px;">All three concepts have the app rating <strong>removed</strong> from the trust bar.</p>
+</div>
+
+</body>
+</html>

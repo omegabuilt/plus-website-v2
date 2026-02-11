@@ -18,6 +18,15 @@ body {
   --color-burgundy: #961414;
   --color-dark-burgundy: #52080D;
   --color-light-bg: #FFF9F9;
+  /* Pastel accents */
+  --pastel-peach: #FDDCCC;
+  --pastel-lavender: #E8DAFB;
+  --pastel-mint: #C9F0DC;
+  --pastel-sky: #CCE5F6;
+  --tint-peach: #FEF0E8;
+  --tint-lavender: #F5F0FD;
+  --tint-mint: #EDFAF3;
+  --tint-sky: #EBF4FB;
 }
 
 /* Utility classes for custom colors */
@@ -182,6 +191,15 @@ button {
   animation: pulseGlow 2.5s ease-in-out infinite;
 }
 
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.15); opacity: 0.35; }
+}
+
+.animate-ring-pulse {
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
 /* Stagger delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
@@ -192,4 +210,87 @@ button {
 /* Hidden until animated */
 .animate-hidden {
   opacity: 0;
+}
+
+/* Legal content styling (for API-rendered HTML) */
+.legal-content h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #52080D;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.legal-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #52080D;
+  margin-bottom: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.legal-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #52080D;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.legal-content p {
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.legal-content ul,
+.legal-content ol {
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.legal-content ul {
+  list-style-type: disc;
+}
+
+.legal-content ol {
+  list-style-type: decimal;
+}
+
+.legal-content li {
+  margin-bottom: 0.25rem;
+}
+
+.legal-content a {
+  color: #961414;
+  text-decoration: underline;
+}
+
+.legal-content a:hover {
+  color: #52080D;
+}
+
+.legal-content strong,
+.legal-content b {
+  font-weight: 600;
+}
+
+.legal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.legal-content th,
+.legal-content td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.legal-content th {
+  background-color: #f9fafb;
+  font-weight: 600;
 }

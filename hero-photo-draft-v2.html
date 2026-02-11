@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plus Hero – Photo on Left, Phone on Right</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; background: #f5f5f5; }
+
+  .label {
+    text-align: center;
+    padding: 32px 16px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #961414;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .label span { color: #888; font-weight: 400; font-size: 12px; display: block; margin-top: 4px; text-transform: none; letter-spacing: 0; }
+
+  .divider { max-width: 800px; margin: 0 auto; border-top: 2px dashed #ddd; }
+
+  /* ===== HERO BASE ===== */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(145deg, #FFF9F9 0%, #fff 20%, #FEF0E8 40%, #F5F0FD 65%, #EDFAF3 85%, #EBF4FB 100%);
+  }
+
+  .blob { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(90px); }
+  .blob-1 { top: -80px; right: -60px; width: 450px; height: 450px; background: radial-gradient(circle, #FDDCCC, transparent 70%); opacity: 0.4; animation: bfloat 7s ease-in-out infinite; }
+  .blob-2 { bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, #E8DAFB, transparent 70%); opacity: 0.4; animation: bfloat 9s ease-in-out infinite 1s; }
+  .blob-3 { top: 30%; left: 50%; width: 350px; height: 350px; background: radial-gradient(circle, #C9F0DC, transparent 70%); opacity: 0.3; animation: bfloat 10s ease-in-out infinite 2s; }
+
+  @keyframes bfloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  /* 3-column layout: photo | text | phone */
+  .hero-inner-3col {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 0.8fr;
+    gap: 36px;
+    align-items: center;
+  }
+
+  /* 2-column with photo behind text */
+  .hero-inner-2col {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 900;
+    color: #52080D;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  h1 .gradient {
+    background: linear-gradient(135deg, #961414 0%, #C44B4B 50%, #B8578A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #888;
+    line-height: 1.7;
+    max-width: 400px;
+    margin-top: 14px;
+  }
+
+  .badges { display: flex; gap: 12px; margin-top: 20px; }
+  .badge-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #111; color: #fff; padding: 10px 18px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; text-decoration: none; transition: transform 0.2s;
+  }
+  .badge-btn:hover { transform: scale(1.04); }
+  .badge-btn small { font-size: 9px; font-weight: 400; display: block; color: #aaa; }
+
+  .trust-bar {
+    display: flex; gap: 24px; margin-top: 24px; padding-top: 20px;
+    border-top: 1px solid rgba(150, 20, 20, 0.1);
+  }
+  .trust-item { display: flex; align-items: center; gap: 10px; }
+  .trust-icon { width: 38px; height: 38px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .trust-label p { font-size: 12px; font-weight: 700; color: #52080D; }
+  .trust-label span { font-size: 10px; color: #aaa; }
+
+  /* ===== PHOTO STYLES ===== */
+  .photo-col {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .photo-rounded {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 3/4;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(82,8,13,0.1);
+  }
+  .photo-rounded img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Photo with pastel border */
+  .photo-glow {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3/4;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(82,8,13,0.1);
+  }
+  .photo-glow::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 30px;
+    background: linear-gradient(160deg, #FDDCCC, #E8DAFB, #C9F0DC, #CCE5F6);
+    z-index: -1;
+  }
+  .photo-glow img { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
+
+  /* Circular photo */
+  .photo-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(253,220,204,0.5);
+    box-shadow: 0 20px 50px rgba(82,8,13,0.08);
+  }
+  .photo-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Left side: photo + text stacked */
+  .left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .left-stack .photo-behind {
+    position: relative;
+  }
+  .photo-behind .photo-bg {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 200px;
+    height: 260px;
+    border-radius: 24px;
+    overflow: hidden;
+    opacity: 0.9;
+    z-index: 0;
+  }
+  .photo-behind .photo-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ===== PHONE MOCKUP (unchanged from current site) ===== */
+  .phone-col {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .phone-wrap { position: relative; animation: bfloat 5s ease-in-out infinite; }
+  .phone-frame {
+    width: 250px;
+    background: #1a1a1a;
+    border-radius: 36px;
+    padding: 9px;
+    box-shadow: 0 40px 80px rgba(82,8,13,0.15);
+  }
+  .phone-screen {
+    background: linear-gradient(180deg, #961414, #52080D);
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 9/19;
+  }
+  .phone-status { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px 6px; }
+  .phone-status span { color: rgba(255,255,255,0.7); font-size: 9px; font-weight: 500; }
+  .phone-content { padding: 0 16px 16px; }
+  .phone-content .port-label { color: rgba(255,255,255,0.5); font-size: 9px; }
+  .phone-content .port-val { color: #fff; font-size: 22px; font-weight: 800; margin-top: 4px; }
+  .phone-content .port-gain {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(74,222,128,0.15); border-radius: 6px;
+    padding: 2px 8px; margin-top: 6px; font-size: 10px; color: #4ade80; font-weight: 600;
+  }
+  .chart-bars { display: flex; align-items: flex-end; gap: 3px; height: 50px; margin-top: 14px; }
+  .chart-bars div { flex: 1; border-radius: 2px 2px 0 0; }
+  .phone-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 10px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .phone-card .name { color: #fff; font-size: 10px; font-weight: 600; }
+  .phone-card .sub { color: rgba(255,255,255,0.4); font-size: 8px; }
+  .phone-card .pct { color: #4ade80; font-size: 10px; font-weight: 700; }
+
+  /* Floating cards */
+  .float-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex; align-items: center; gap: 10px;
+    z-index: 2;
+    animation: bfloat 5s ease-in-out infinite;
+  }
+  .float-card .icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .float-card .fc-title { font-size: 10px; font-weight: 700; color: #333; }
+  .float-card .fc-sub { font-size: 9px; color: #22c55e; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .hero-inner-3col { grid-template-columns: 1fr; text-align: center; }
+    .hero-inner-2col { grid-template-columns: 1fr; text-align: center; }
+    .subtitle { margin: 14px auto 0; }
+    .badges { justify-content: center; }
+    .trust-bar { justify-content: center; flex-wrap: wrap; }
+    .photo-rounded, .photo-glow { max-width: 260px; margin: 0 auto; }
+    .photo-circle { width: 220px; height: 220px; margin: 0 auto; }
+    .phone-frame { width: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================ -->
+<!-- CONCEPT A: 3-column — Photo | Text | Phone -->
+<!-- ================================ -->
+<p class="label">Concept A <span>3-column layout: lifestyle photo on left, text in center, phone mockup on right</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner-3col">
+    <!-- Left: Photo -->
+    <div class="photo-col">
+      <div class="photo-rounded">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&h=680&fit=crop&crop=face" alt="Smiling young woman" />
+      </div>
+    </div>
+
+    <!-- Center: Text -->
+    <div>
+      <h1>
+        Invest smarter<br />
+        <span class="gradient">from Ghana</span>
+      </h1>
+      <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start with as little as GHS 10.</p>
+
+      <div class="badges">
+        <a href="#" class="badge-btn">
+          <span>▶</span>
+          <div><small>GET IT ON</small>Google Play</div>
+        </a>
+        <a href="#" class="badge-btn">
+          <span></span>
+          <div><small>Download on the</small>App Store</div>
+        </a>
+      </div>
+
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+          <div class="trust-label"><p>SEC Licensed</p><span>Ghana SEC</span></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+          <div class="trust-label"><p>100K+</p><span>Users</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Phone (unchanged) -->
+    <div class="phone-col">
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-status"><span>9:41</span><span>● ● ■</span></div>
+            <div class="phone-content">
+              <p class="port-label">Total Portfolio</p>
+              <p class="port-val">GHS 12,450</p>
+              <div class="port-gain">▲ +12.4%</div>
+              <div class="chart-bars">
+                <div style="height:40%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:55%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:35%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:60%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:50%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:70%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:65%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:80%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:75%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:90%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:85%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:95%; background:rgba(253,220,204,0.5);"></div>
+              </div>
+              <div class="phone-card"><div><p class="name">Mutual Funds</p><p class="sub">Stanbic Cash Trust</p></div><p class="pct">+8.2%</p></div>
+              <div class="phone-card"><div><p class="name">T-Bills</p><p class="sub">91-day Bill</p></div><p class="pct">+29.5%</p></div>
+              <div class="phone-card"><div><p class="name">US Stocks</p><p class="sub">Apple Inc.</p></div><p class="pct">+15.3%</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating cards -->
+        <div class="float-card" style="left:-50px; top:22%; animation-delay:0.5s;">
+          <div class="icon" style="background:#C9F0DC;">✓</div>
+          <div><p class="fc-title">Investment Made</p><p class="fc-sub">GHS 500.00</p></div>
+        </div>
+        <div class="float-card" style="right:-50px; bottom:30%; animation-delay:1.5s;">
+          <div class="icon" style="background:#FDDCCC;">📈</div>
+          <div><p class="fc-title">Portfolio Up</p><p class="fc-sub">+12.4% this month</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================ -->
+<!-- CONCEPT B: Photo tucked behind/beside text on left, phone on right -->
+<!-- ================================ -->
+<p class="label">Concept B <span>Photo as a decorative element behind/beside the text column — phone stays on the right</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner-2col">
+    <!-- Left: Text with photo accent -->
+    <div style="position:relative;">
+      <!-- Photo accent behind text -->
+      <div style="position:absolute; top:-30px; left:-40px; width:180px; height:240px; border-radius:24px; overflow:hidden; opacity:0.25; z-index:0; transform:rotate(-4deg);">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=400&fit=crop&crop=face" alt="" style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+
+      <div style="position:relative; z-index:1;">
+        <h1>
+          Invest smarter<br />
+          <span class="gradient">from Ghana</span>
+        </h1>
+        <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start with as little as GHS 10.</p>
+
+        <div class="badges">
+          <a href="#" class="badge-btn"><span>▶</span><div><small>GET IT ON</small>Google Play</div></a>
+          <a href="#" class="badge-btn"><span></span><div><small>Download on the</small>App Store</div></a>
+        </div>
+
+        <div class="trust-bar">
+          <div class="trust-item">
+            <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+            <div class="trust-label"><p>SEC Licensed</p><span>Ghana SEC</span></div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+            <div class="trust-label"><p>100K+</p><span>Users</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Phone -->
+    <div class="phone-col">
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-status"><span>9:41</span><span>● ● ■</span></div>
+            <div class="phone-content">
+              <p class="port-label">Total Portfolio</p>
+              <p class="port-val">GHS 12,450</p>
+              <div class="port-gain">▲ +12.4%</div>
+              <div class="chart-bars">
+                <div style="height:40%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:55%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:35%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:60%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:50%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:70%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:65%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:80%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:75%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:90%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:85%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:95%; background:rgba(253,220,204,0.5);"></div>
+              </div>
+              <div class="phone-card"><div><p class="name">Mutual Funds</p><p class="sub">Stanbic Cash Trust</p></div><p class="pct">+8.2%</p></div>
+              <div class="phone-card"><div><p class="name">T-Bills</p><p class="sub">91-day Bill</p></div><p class="pct">+29.5%</p></div>
+              <div class="phone-card"><div><p class="name">US Stocks</p><p class="sub">Apple Inc.</p></div><p class="pct">+15.3%</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card" style="left:-50px; top:22%; animation-delay:0.5s;">
+          <div class="icon" style="background:#C9F0DC;">✓</div>
+          <div><p class="fc-title">Investment Made</p><p class="fc-sub">GHS 500.00</p></div>
+        </div>
+        <div class="float-card" style="right:-50px; bottom:30%; animation-delay:1.5s;">
+          <div class="icon" style="background:#FDDCCC;">📈</div>
+          <div><p class="fc-title">Portfolio Up</p><p class="fc-sub">+12.4% this month</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================ -->
+<!-- CONCEPT C: Circular photo on far left, text beside it, phone on right -->
+<!-- ================================ -->
+<p class="label">Concept C <span>Circular photo on the far left with a pastel glow ring — clean and modern</span></p>
+
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <div class="hero-inner-3col">
+    <!-- Left: Circular photo -->
+    <div class="photo-col">
+      <div style="position:relative;">
+        <!-- Pastel ring glow -->
+        <div style="position:absolute; inset:-12px; border-radius:50%; background:linear-gradient(160deg, #FDDCCC, #E8DAFB, #C9F0DC); opacity:0.4; filter:blur(8px);"></div>
+        <div class="photo-circle">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face" alt="Smiling young man" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Text -->
+    <div>
+      <h1>
+        Invest smarter<br />
+        <span class="gradient">from Ghana</span>
+      </h1>
+      <p class="subtitle">Mutual funds, T-Bills, and US stocks — all in one app. Start with as little as GHS 10.</p>
+
+      <div class="badges">
+        <a href="#" class="badge-btn"><span>▶</span><div><small>GET IT ON</small>Google Play</div></a>
+        <a href="#" class="badge-btn"><span></span><div><small>Download on the</small>App Store</div></a>
+      </div>
+
+      <div class="trust-bar">
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #FEF0E8;">🛡️</div>
+          <div class="trust-label"><p>SEC Licensed</p><span>Ghana SEC</span></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" style="background: #EDFAF3;">👥</div>
+          <div class="trust-label"><p>100K+</p><span>Users</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Phone -->
+    <div class="phone-col">
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-status"><span>9:41</span><span>● ● ■</span></div>
+            <div class="phone-content">
+              <p class="port-label">Total Portfolio</p>
+              <p class="port-val">GHS 12,450</p>
+              <div class="port-gain">▲ +12.4%</div>
+              <div class="chart-bars">
+                <div style="height:40%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:55%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:35%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:60%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:50%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:70%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:65%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:80%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:75%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:90%; background:rgba(253,220,204,0.5);"></div>
+                <div style="height:85%; background:rgba(255,255,255,0.2);"></div>
+                <div style="height:95%; background:rgba(253,220,204,0.5);"></div>
+              </div>
+              <div class="phone-card"><div><p class="name">Mutual Funds</p><p class="sub">Stanbic Cash Trust</p></div><p class="pct">+8.2%</p></div>
+              <div class="phone-card"><div><p class="name">T-Bills</p><p class="sub">91-day Bill</p></div><p class="pct">+29.5%</p></div>
+              <div class="phone-card"><div><p class="name">US Stocks</p><p class="sub">Apple Inc.</p></div><p class="pct">+15.3%</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="float-card" style="left:-50px; top:22%; animation-delay:0.5s;">
+          <div class="icon" style="background:#C9F0DC;">✓</div>
+          <div><p class="fc-title">Investment Made</p><p class="fc-sub">GHS 500.00</p></div>
+        </div>
+        <div class="float-card" style="right:-50px; bottom:30%; animation-delay:1.5s;">
+          <div class="icon" style="background:#FDDCCC;">📈</div>
+          <div><p class="fc-title">Portfolio Up</p><p class="fc-sub">+12.4% this month</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center; padding: 40px 20px; color: #888; font-size: 13px;">
+  <p><strong>Note:</strong> Stock photos are placeholders. Phone mockup is kept exactly as-is on the right side in all concepts.</p>
+  <p style="margin-top:8px;">App rating has been <strong>removed</strong> from the trust bar in all versions.</p>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
+import { useUTM } from "@/lib/useUTM";
+
+const appScreens = [
+  "/images/app-screen-1.jpg",
+  "/images/app-screen-2.jpg",
+  "/images/app-screen-3.jpg",
+];
 
 interface HeroSectionProps {
   title: string;
@@ -14,73 +22,105 @@ export default function HeroSection({
   showAppButtons = true,
 }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
+  const [currentScreen, setCurrentScreen] = useState(0);
+  const { playStoreUrl, appStoreUrl, onDownloadClick } = useUTM();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Auto-advance carousel
+  const nextScreen = useCallback(() => {
+    setCurrentScreen((prev) => (prev + 1) % appScreens.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextScreen, 3500);
+    return () => clearInterval(interval);
+  }, [nextScreen]);
+
+  // Split title for gradient highlight on second line
+  const titleParts = title.split(" from ");
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF9F9] via-white to-[#FFF0F0] min-h-[90vh] flex items-center">
-      {/* Animated gradient blobs */}
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center" style={{ background: "linear-gradient(145deg, #FFF9F9 0%, #fff 20%, #FEF0E8 40%, #F5F0FD 65%, #EDFAF3 85%, #EBF4FB 100%)" }}>
+      {/* Pastel blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full opacity-20"
+          className="absolute -top-24 -right-16 w-[450px] h-[450px] rounded-full"
           style={{
-            background: "radial-gradient(circle, #961414 0%, transparent 70%)",
-            animation: "float 6s ease-in-out infinite",
+            background: "radial-gradient(circle, #FDDCCC, transparent 70%)",
+            filter: "blur(90px)",
+            opacity: 0.4,
+            animation: "float 7s ease-in-out infinite",
           }}
         />
         <div
-          className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full opacity-15"
+          className="absolute -bottom-24 -left-20 w-[400px] h-[400px] rounded-full"
           style={{
-            background: "radial-gradient(circle, #52080D 0%, transparent 70%)",
-            animation: "float 8s ease-in-out infinite 1s",
+            background: "radial-gradient(circle, #E8DAFB, transparent 70%)",
+            filter: "blur(90px)",
+            opacity: 0.4,
+            animation: "float 9s ease-in-out infinite 1s",
           }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
+          className="absolute top-[30%] left-[50%] w-[350px] h-[350px] rounded-full"
           style={{
-            background: "radial-gradient(circle, #961414 0%, transparent 60%)",
-            animation: "float 7s ease-in-out infinite 0.5s",
+            background: "radial-gradient(circle, #C9F0DC, transparent 70%)",
+            filter: "blur(90px)",
+            opacity: 0.3,
+            animation: "float 10s ease-in-out infinite 2s",
+          }}
+        />
+        <div
+          className="absolute top-[60%] right-[20%] w-[280px] h-[280px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, #CCE5F6, transparent 70%)",
+            filter: "blur(90px)",
+            opacity: 0.3,
+            animation: "float 8s ease-in-out infinite 0.5s",
           }}
         />
       </div>
+
+      {/* Pastel ring accents */}
+      <div className="absolute top-[15%] right-[8%] w-20 h-20 rounded-full border-2 border-[#E8DAFB] opacity-20 animate-ring-pulse" />
+      <div className="absolute bottom-[20%] left-[5%] w-12 h-12 rounded-full border-2 border-[#FDDCCC] opacity-20 animate-ring-pulse" style={{ animationDelay: "1s" }} />
+      <div className="absolute top-[60%] right-[45%] w-16 h-16 rounded-full border-2 border-[#C9F0DC] opacity-20 animate-ring-pulse" style={{ animationDelay: "2s" }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8">
-            {/* Tagline badge */}
-            <div
-              className={`inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#961414]/20 rounded-full px-4 py-2 shadow-sm transition-all duration-700 ${
-                mounted
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
-              <span className="w-2 h-2 bg-[#961414] rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-[#52080D]">
-                SEC Regulated · Trusted by 100,000+
-              </span>
-            </div>
-
             {/* Title */}
             <h1
-              className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#52080D] leading-[1.1] tracking-tight transition-all duration-700 delay-100 ${
-                mounted
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+              className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-[#52080D] leading-[1.08] tracking-tight transition-all duration-700 delay-100 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              {title}
+              {titleParts.length > 1 ? (
+                <>
+                  {titleParts[0]}
+                  <br />
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, #961414 0%, #C44B4B 50%, #B8578A 100%)",
+                    }}
+                  >
+                    from {titleParts[1]}
+                  </span>
+                </>
+              ) : (
+                title
+              )}
             </h1>
 
             {/* Subtitle */}
             <p
-              className={`text-lg sm:text-xl text-gray-500 leading-relaxed max-w-lg transition-all duration-700 delay-200 ${
-                mounted
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
+              className={`text-lg sm:text-xl text-gray-400 leading-relaxed max-w-lg transition-all duration-700 delay-200 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
               {subtitle}
@@ -89,243 +129,198 @@ export default function HeroSection({
             {/* App Store Buttons */}
             {showAppButtons && (
               <div
-                className={`flex flex-col sm:flex-row gap-4 pt-2 transition-all duration-700 delay-300 ${
-                  mounted
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
+                className={`flex flex-col sm:flex-row gap-3 pt-2 transition-all duration-700 delay-300 ${
+                  mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
               >
                 <a
-                  href="https://play.google.com/store"
+                  href={playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center sm:justify-start bg-[#961414] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#52080D] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl animate-pulse-glow"
+                  onClick={() => onDownloadClick("google_play")}
+                  className="hover:scale-105 transition-transform duration-300"
                 >
-                  <svg
-                    className="w-6 h-6 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M3.609 1.814L13.792 12 3.609 22.186c-.372.373-.581.884-.581 1.414 0 1.104.896 2 2 2 .53 0 1.041-.209 1.414-.586l11.31-11.31c.391-.391.609-.922.609-1.48 0-.557-.218-1.089-.609-1.48L6.442.586C6.068.211 5.557 0 5.028 0c-1.104 0-2 .896-2 2 0 .531.209 1.041.581 1.414z" />
-                  </svg>
-                  <span>Google Play</span>
+                  <Image
+                    src="/images/google-play-badge.svg"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={53}
+                    className="h-[53px] w-auto"
+                    style={{ width: "auto", height: "auto" }}
+                  />
                 </a>
 
                 <a
-                  href="https://apps.apple.com"
+                  href={appStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center sm:justify-start bg-[#52080D] text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#961414] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  onClick={() => onDownloadClick("app_store")}
+                  className="hover:scale-105 transition-transform duration-300"
                 >
-                  <svg
-                    className="w-6 h-6 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.3-3.14-2.53C2.36 20.9.5 16.6 2.61 13.64c1.07-1.79 2.71-2.91 4.56-2.94 1.28-.02 2.49.75 3.29.75.81 0 2.26-.96 3.81-.85.64.025 2.48.21 3.82 1.66-.14.09-1.11.67-1.11 2.01 0 1.68 1.3 2.25 1.3 2.25s-.8 2.4-2.13 3.65m-8.86-18.1c.47-.56 1.08-1.12 1.81-1.12.02.13.04.27.04.41 0 .78-.27 1.73-1.01 2.3-.63.48-1.56.72-2.35.68-.04-.13-.08-.27-.08-.41 0-.82.29-1.73 1.01-2.3z" />
-                  </svg>
-                  <span>App Store</span>
+                  <Image
+                    src="/images/app-store-badge.svg"
+                    alt="Download on the App Store"
+                    width={180}
+                    height={53}
+                    className="h-[53px] w-auto"
+                    style={{ width: "auto", height: "auto" }}
+                  />
                 </a>
               </div>
             )}
+
+            {/* Trust bar */}
+            <div
+              className={`flex flex-wrap items-center gap-6 sm:gap-7 pt-6 border-t border-[#961414]/10 transition-all duration-700 delay-[400ms] ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#FEF0E8] flex items-center justify-center">
+                  <svg className="w-[18px] h-[18px]" fill="none" stroke="#961414" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#52080D]">12K+</p>
+                  <p className="text-[11px] text-gray-400">Transactions / Week</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#EDFAF3] flex items-center justify-center">
+                  <svg className="w-[18px] h-[18px]" fill="none" stroke="#5B8C60" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#52080D]">100K+</p>
+                  <p className="text-[11px] text-gray-400">Users</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#EBF4FB] flex items-center justify-center">
+                  <svg className="w-[18px] h-[18px]" fill="none" stroke="#3B82C4" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-[#52080D]">24/7</p>
+                  <p className="text-[11px] text-gray-400">Access</p>
+                </div>
+              </div>
+
+            </div>
           </div>
 
-          {/* Right Content - Phone Mockup with floating animation */}
+          {/* Right Content - Phone Mockup */}
           <div
             className={`flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${
-              mounted
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <div className="relative">
-              {/* Gradient circle behind phone */}
+              {/* Pastel glow behind phone */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div
-                  className="w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] rounded-full"
+                  className="w-[380px] h-[380px] rounded-full"
                   style={{
-                    background:
-                      "radial-gradient(circle, rgba(150,20,20,0.15) 0%, transparent 70%)",
+                    background: "radial-gradient(circle, #FBCED0 0%, #E8DAFB 40%, transparent 70%)",
+                    opacity: 0.4,
+                    filter: "blur(40px)",
                   }}
                 />
               </div>
 
               {/* Phone mockup */}
-              <div className="relative animate-float">
-                <div className="w-[260px] sm:w-[280px] mx-auto">
+              <div className="relative" style={{ animation: "float 5s ease-in-out infinite" }}>
+                <div className="w-[260px] sm:w-[270px] mx-auto">
                   {/* Phone frame */}
-                  <div className="bg-[#1a1a1a] rounded-[40px] p-3 shadow-2xl">
-                    {/* Screen */}
-                    <div className="bg-gradient-to-b from-[#961414] to-[#52080D] rounded-[32px] overflow-hidden aspect-[9/19]">
-                      {/* Status bar */}
-                      <div className="flex justify-between items-center px-6 pt-3 pb-2">
-                        <span className="text-white/80 text-[10px] font-medium">
-                          9:41
-                        </span>
-                        <div className="flex gap-1">
-                          <div className="w-3 h-2 bg-white/60 rounded-sm" />
-                          <div className="w-3 h-2 bg-white/60 rounded-sm" />
-                          <div className="w-4 h-2 bg-white/80 rounded-sm" />
-                        </div>
-                      </div>
-
-                      {/* App content mockup */}
-                      <div className="px-5 pt-4">
-                        <p className="text-white/60 text-[10px]">
-                          Total Portfolio
-                        </p>
-                        <p className="text-white text-2xl font-bold mt-1">
-                          GHS 12,450.00
-                        </p>
-                        <div className="flex items-center gap-1 mt-1">
-                          <svg
-                            className="w-3 h-3 text-green-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={3}
-                              d="M5 10l7-7m0 0l7 7m-7-7v18"
+                  <div className="bg-[#1a1a1a] rounded-[40px] p-[10px] shadow-2xl" style={{ boxShadow: "0 40px 80px rgba(82,8,13,0.15), 0 0 0 1px rgba(255,255,255,0.05) inset" }}>
+                    {/* Screen with carousel */}
+                    <div className="rounded-[32px] overflow-hidden relative bg-white" style={{ aspectRatio: "9/19.5" }}>
+                      <div
+                        className="flex transition-transform duration-700 ease-in-out h-full"
+                        style={{ transform: `translateX(-${currentScreen * 100}%)` }}
+                      >
+                        {appScreens.map((src, i) => (
+                          <div key={i} className="w-full h-full flex-shrink-0">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={src}
+                              alt={`Plus app screen ${i + 1}`}
+                              className="w-full h-full object-cover object-top"
                             />
-                          </svg>
-                          <span className="text-green-400 text-xs font-semibold">
-                            +12.4%
-                          </span>
-                        </div>
-
-                        {/* Mini chart */}
-                        <div className="mt-4 h-16 flex items-end gap-[3px]">
-                          {[40, 55, 35, 60, 50, 70, 65, 80, 75, 90, 85, 95].map(
-                            (h, i) => (
-                              <div
-                                key={i}
-                                className="flex-1 bg-white/30 rounded-t-sm"
-                                style={{ height: `${h}%` }}
-                              />
-                            )
-                          )}
-                        </div>
-
-                        {/* Product cards */}
-                        <div className="mt-5 space-y-2">
-                          <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">
-                                  Mutual Funds
-                                </p>
-                                <p className="text-white/50 text-[9px]">
-                                  Stanbic Cash Trust
-                                </p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">
-                                +8.2%
-                              </p>
-                            </div>
                           </div>
-                          <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">
-                                  T-Bills
-                                </p>
-                                <p className="text-white/50 text-[9px]">
-                                  91-day Bill
-                                </p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">
-                                +29.5%
-                              </p>
-                            </div>
-                          </div>
-                          <div className="bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                            <div className="flex justify-between items-center">
-                              <div>
-                                <p className="text-white text-[11px] font-semibold">
-                                  US Stocks
-                                </p>
-                                <p className="text-white/50 text-[9px]">
-                                  Apple Inc.
-                                </p>
-                              </div>
-                              <p className="text-green-400 text-[11px] font-bold">
-                                +15.3%
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+                        ))}
+                      </div>
+                      {/* Carousel dots */}
+                      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+                        {appScreens.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setCurrentScreen(i)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              i === currentScreen ? "bg-[#961414] w-4" : "bg-gray-300"
+                            }`}
+                            aria-label={`Go to screen ${i + 1}`}
+                          />
+                        ))}
                       </div>
                     </div>
                   </div>
-                  {/* Home indicator */}
-                  <div className="mx-auto mt-2 w-24 h-1 bg-gray-300 rounded-full" />
                 </div>
               </div>
 
-              {/* Floating badges */}
+              {/* Floating cards */}
               <div
-                className="absolute -left-4 sm:-left-8 top-1/4 bg-white rounded-xl shadow-lg px-3 py-2 border border-gray-100"
-                style={{
-                  animation: "float 5s ease-in-out infinite 0.5s",
-                }}
+                className="absolute -left-4 sm:-left-14 top-1/4 bg-white rounded-2xl shadow-lg px-3 py-2.5 border border-gray-100/80 z-10"
+                style={{ animation: "float 5s ease-in-out infinite 0.5s", boxShadow: "0 8px 28px rgba(0,0,0,0.06)" }}
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-green-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#C9F0DC] flex items-center justify-center">
+                    <svg className="w-4 h-4" fill="none" stroke="#22c55e" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-gray-800">
-                      Investment Made
-                    </p>
-                    <p className="text-[9px] text-gray-500">GHS 500.00</p>
+                    <p className="text-[10px] font-bold text-gray-800">Investment Made</p>
+                    <p className="text-[9px] text-green-600 font-semibold">GHS 500.00</p>
                   </div>
                 </div>
               </div>
 
               <div
-                className="absolute -right-4 sm:-right-8 bottom-1/3 bg-white rounded-xl shadow-lg px-3 py-2 border border-gray-100"
-                style={{
-                  animation: "float 5s ease-in-out infinite 1.5s",
-                }}
+                className="absolute -right-4 sm:-right-14 bottom-[32%] bg-white rounded-2xl shadow-lg px-3 py-2.5 border border-gray-100/80 z-10"
+                style={{ animation: "float 5s ease-in-out infinite 1.5s", boxShadow: "0 8px 28px rgba(0,0,0,0.06)" }}
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-[#FFF9F9] rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-[#961414]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                      />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#FDDCCC] flex items-center justify-center">
+                    <svg className="w-4 h-4" fill="none" stroke="#961414" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-gray-800">
-                      Portfolio Up
-                    </p>
-                    <p className="text-[9px] text-green-600 font-semibold">
-                      +12.4% this month
-                    </p>
+                    <p className="text-[10px] font-bold text-gray-800">Portfolio Up</p>
+                    <p className="text-[9px] text-green-600 font-semibold">+12.4% this month</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="absolute right-2 sm:right-0 -top-5 bg-white rounded-2xl shadow-lg px-3 py-2.5 border border-gray-100/80 z-10"
+                style={{ animation: "float 6s ease-in-out infinite 0.8s", boxShadow: "0 8px 28px rgba(0,0,0,0.06)" }}
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#C9F0DC] flex items-center justify-center">
+                    <svg className="w-4 h-4" fill="none" stroke="#22C55E" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-800">Deposit Received</p>
+                    <p className="text-[9px] text-gray-400">GHS 500.00</p>
                   </div>
                 </div>
               </div>

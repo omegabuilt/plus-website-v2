@@ -30,7 +30,7 @@ const faqItems: FAQItem[] = [
     category: 'Getting Started',
     question: 'Is Plus safe to use?',
     answer:
-      'Plus is operated by 10th Capital Investments Limited, which is licensed and regulated by the Ghana Securities & Exchange Commission (SEC). Your data is encrypted and your account is protected by biometric login.',
+      'Plus is operated by 10th Capital Investments Limited, which is licensed and regulated by the Ghana Securities & Exchange Commission (SEC). Plus has biometric and encryption features to help keep your account secure.',
   },
   // Investing
   {
@@ -38,21 +38,21 @@ const faqItems: FAQItem[] = [
     category: 'Investing',
     question: 'What can I invest in?',
     answer:
-      'You can invest in Mutual Funds (Stanbic Cash Trust, IC Cash Trust, Databank Mfund II), Government Treasury Bills, and US Stocks (4,000+ companies, powered by Bamboo).',
+      'You can invest in Mutual Funds (Stanbic Cash Trust, IC Liquidity Fund, Databank MFund II), Government Treasury Bills, and US Stocks (4,000+ companies).',
   },
   {
     id: 'investing-2',
     category: 'Investing',
     question: 'How much do I need to start?',
     answer:
-      'You can start investing with as little as GHS 10 for mutual funds. US stocks allow you to start with as little as $1 through fractional shares.',
+      'You can start investing with as little as GHS 10 for mutual funds. US stocks allow you to start with as little as $10.',
   },
   {
     id: 'investing-3',
     category: 'Investing',
     question: 'How do I fund my account?',
     answer:
-      'You can fund your account via Mobile Money. It\'s easy to top up directly from your phone — no bank visits needed.',
+      'You can fund your account via Momo, bank transfer, or bank card.',
   },
   // Transactions
   {
@@ -82,7 +82,7 @@ const faqItems: FAQItem[] = [
     category: 'Support',
     question: 'How do I contact support?',
     answer:
-      'Email us at support@plusapp.online or reach out on Instagram, YouTube, or TikTok @investwithplus.',
+      'Email us at support@plusapp.online or call us on 020 167 3720.',
   },
 ];
 

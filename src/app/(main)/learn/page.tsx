@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import DownloadCTA from '@/components/DownloadCTA';
+
+export const metadata: Metadata = {
+  title: "Learn",
+  description: "Financial education and investment tips from Plus. Follow us on YouTube, Instagram, and TikTok for guides and market updates.",
+};
 
 export default function LearnPage() {
   return (
@@ -45,8 +51,9 @@ export default function LearnPage() {
               className="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:border-[#961414]"
             >
               <div className="mb-4 inline-block rounded-lg bg-[#FFF9F9] p-3 group-hover:bg-[#961414] transition-colors">
-                <svg width={28} height={28} fill="currentColor" viewBox="0 0 24 24" className="text-[#961414] group-hover:text-white transition-colors">
-                  <path d="M19.615 3.175c-3.674-.492-11.556-.492-15.23 0C1.912 3.667.5 5.068.5 7.57v8.86c0 2.502 1.412 3.903 5.385 4.395 3.674.492 11.556.492 15.23 0 3.973-.492 5.385-1.893 5.385-4.395v-8.86c0-2.502-1.412-3.903-5.385-4.395zM8 15.5v-7l6 3.5-6 3.5z" />
+                <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[#961414] group-hover:text-white transition-colors">
+                  <rect x="2" y="4" width="20" height="16" rx="4" />
+                  <polygon points="10,8.5 16,12 10,15.5" fill="currentColor" stroke="none" />
                 </svg>
               </div>
               <h4 className="mb-2 text-xl font-bold text-gray-900">YouTube</h4>
@@ -66,8 +73,10 @@ export default function LearnPage() {
               className="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:border-[#961414]"
             >
               <div className="mb-4 inline-block rounded-lg bg-[#FFF9F9] p-3 group-hover:bg-[#961414] transition-colors">
-                <svg width={28} height={28} fill="currentColor" viewBox="0 0 24 24" className="text-[#961414] group-hover:text-white transition-colors">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.646.069 4.85 0 3.204-.012 3.584-.069 4.85-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.322a1.44 1.44 0 110-2.881 1.44 1.44 0 010 2.881z" />
+                <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[#961414] group-hover:text-white transition-colors">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </div>
               <h4 className="mb-2 text-xl font-bold text-gray-900">
@@ -89,8 +98,8 @@ export default function LearnPage() {
               className="group rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:border-[#961414]"
             >
               <div className="mb-4 inline-block rounded-lg bg-[#FFF9F9] p-3 group-hover:bg-[#961414] transition-colors">
-                <svg width={28} height={28} fill="none" stroke="currentColor" viewBox="0 0 24 24" className="text-[#961414] group-hover:text-white transition-colors">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-[#961414] group-hover:text-white transition-colors">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                 </svg>
               </div>
               <h4 className="mb-2 text-xl font-bold text-gray-900">
