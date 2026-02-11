@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 // Replace with your actual GTM container ID once you create one at tagmanager.google.com
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
@@ -83,6 +81,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href="https://www.plusapp.online" />
 
+
         {/* Google Tag Manager - head script */}
         {GTM_ID && (
           <Script
@@ -113,9 +112,7 @@ export default function RootLayout({
           </noscript>
         )}
 
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
