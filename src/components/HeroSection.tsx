@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import { useUTM } from "@/lib/useUTM";
 
 const appScreens = [
@@ -140,13 +139,11 @@ export default function HeroSection({
                   onClick={() => onDownloadClick("google_play")}
                   className="hover:scale-105 transition-transform duration-300"
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src="/images/google-play-badge.svg"
                     alt="Get it on Google Play"
-                    width={180}
-                    height={53}
                     className="h-[53px] w-auto"
-                    style={{ width: "auto", height: "auto" }}
                   />
                 </a>
 
@@ -157,13 +154,11 @@ export default function HeroSection({
                   onClick={() => onDownloadClick("app_store")}
                   className="hover:scale-105 transition-transform duration-300"
                 >
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src="/images/app-store-badge.svg"
                     alt="Download on the App Store"
-                    width={180}
-                    height={53}
                     className="h-[53px] w-auto"
-                    style={{ width: "auto", height: "auto" }}
                   />
                 </a>
               </div>

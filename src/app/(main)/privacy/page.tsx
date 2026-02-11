@@ -1,6 +1,7 @@
 import { fetchTermsData } from "@/lib/api";
 
 export default async function PrivacyPage() {
+
   const { privacy } = await fetchTermsData();
   const year = new Date().getFullYear();
 
@@ -12,9 +13,6 @@ export default async function PrivacyPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-burgundy-dark mb-4 sm:mb-6">
             Privacy Policy
           </h1>
-          <p className="text-lg sm:text-xl text-burgundy-dark/80 max-w-2xl">
-            Last updated: {year}
-          </p>
         </div>
       </section>
 

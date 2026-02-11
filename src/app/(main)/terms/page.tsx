@@ -12,9 +12,6 @@ export default async function TermsPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-burgundy-dark mb-4 sm:mb-6">
             Terms of Service
           </h1>
-          <p className="text-lg sm:text-xl text-burgundy-dark/80 max-w-2xl">
-            Last updated: {year}
-          </p>
         </div>
       </section>
 
