@@ -16,7 +16,7 @@ export default function Footer() {
                 alt="Plus Investment App"
                 width={120}
                 height={40}
-                className="h-10 w-auto"
+                className="h-20 w-auto"
               />
             </div>
             <p className="text-white/80 text-sm leading-relaxed">
