@@ -55,7 +55,7 @@ const videos: Video[] = [
     views: "4.4K",
   },
   {
-    id: "kR7V1jl1yuw",
+    id: "LHddcHQczxY",
     title: "What Does It Mean to Buy Shares in a Company?",
     duration: "8:04",
     views: "5.9K",
@@ -67,25 +67,25 @@ const videos: Video[] = [
     views: "17K",
   },
   {
-    id: "OUU9TBsMotI",
+    id: "Pn90Z9RQdbQ",
     title: "Why You Should Not Hide Money Under Your Bed",
     duration: "7:19",
     views: "9.4K",
   },
   {
-    id: "e2E83Lfbdj8",
+    id: "B8uI9U7G6Zw",
     title: "Why You Should Not Rush Into Financial Decisions",
     duration: "7:48",
     views: "334",
   },
   {
-    id: "V6u4Mx9VePY",
+    id: "XsODV7Vk3so",
     title: "Is a 100% Return Safe?",
     duration: "8:31",
     views: "207",
   },
   {
-    id: "qm3X5rVxDNA",
+    id: "E2IcChIHJgU",
     title: "Should You Buy an iPhone for Half Price?",
     duration: "8:20",
     views: "259",
