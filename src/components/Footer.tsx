@@ -54,6 +54,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <Link
                   href="/about"
                   className="text-white/70 hover:text-white transition-colors text-sm"
@@ -78,6 +79,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 <a
