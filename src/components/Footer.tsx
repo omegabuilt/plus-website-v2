@@ -138,6 +138,22 @@ export default function Footer() {
                   020 167 3720
                 </a>
               </li>
+              <li>
+                <a
+                  href="tel:+233532478602"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
+                >
+                  0532 478 602
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+233531167085"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
+                >
+                  0531 167 085
+                </a>
+              </li>
             </ul>
           </div>
 
