@@ -72,7 +72,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+233532478602"
-                  className="text-white/60 hover:text-white transition-colors text-sm"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
                 >
                   0532 478 602
                 </a>
@@ -80,15 +80,10 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+233531167085"
-                  className="text-white/60 hover:text-white transition-colors text-sm"
+                  className="text-white/70 hover:text-white transition-colors text-sm"
                 >
                   0531 167 085
                 </a>
-              </li>
-              <li className="text-white/40 text-sm leading-snug pt-1">
-                Y21B Agostinho Neto Road
-                <br />
-                Airport Residential, Accra
               </li>
             </ul>
           </div>
