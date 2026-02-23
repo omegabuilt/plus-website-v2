@@ -3,7 +3,6 @@ import { fetchTermsData } from "@/lib/api";
 export default async function PrivacyPage() {
 
   const { privacy } = await fetchTermsData();
-  const year = new Date().getFullYear();
 
   return (
     <>

@@ -1,8 +1,8 @@
 import { fetchTermsData } from "@/lib/api";
 
 export default async function TermsPage() {
+  
   const { terms } = await fetchTermsData();
-  const year = new Date().getFullYear();
 
   return (
     <>
