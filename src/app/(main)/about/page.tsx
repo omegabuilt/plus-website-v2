@@ -1,181 +1,226 @@
 "use client";
 
-import AnimatedCounter from "@/components/AnimatedCounter";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
-import DownloadCTA from "@/components/DownloadCTA";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Page Header */}
-      <section className="bg-burgundy-light py-16 sm:py-20 lg:py-28">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-burgundy-dark mb-4 sm:mb-6">
-            Building Wealth, One Investment at a Time
-          </h1>
-          <p className="text-lg sm:text-xl text-burgundy-dark/80 max-w-2xl">
-            We&apos;re on a mission to make investing accessible to every Ghanaian.
-          </p>
+    <div className="min-h-screen bg-white">
+      {/* Heading Section */}
+      <section className="py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-[#FFF9F9] to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimateOnScroll animation="fade-in-up">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#52080D] mb-6 leading-tight">
+              Building Wealth, One Investment at a Time
+            </h1>
+            <p className="text-gray-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+              10th Capital Investments Limited is an SEC-regulated company based
+              in Accra, Ghana, building tools that make investing accessible to
+              everyone.
+            </p>
+          </AnimateOnScroll>
         </div>
       </section>
 
-      {/* Our Story Section */}
+      {/* Our Story */}
       <section className="py-16 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-burgundy-dark mb-8 sm:mb-12">
-            Our Story
-          </h2>
+          <AnimateOnScroll animation="fade-in-up">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#52080D] mb-8 text-center">
+              Our Story
+            </h2>
+            <div className="space-y-6 text-gray-600 text-base sm:text-lg leading-relaxed">
+              <p>
+                We started Plus because we believed every Ghanaian should have
+                access to the same investment opportunities that were once
+                reserved for the wealthy. From mutual funds and treasury bills to
+                US stocks, Plus puts it all in the palm of your hand.
+              </p>
+              <p>
+                Our team is passionate about financial inclusion. We work every
+                day to make investing simpler, safer, and more accessible — no
+                paperwork, no middlemen, no barriers.
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
 
-          <div className="space-y-6 sm:space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed">
-            <p>
-              Plus is built by 10th Capital Investments Limited, an SEC-licensed
-              investment management company based in Accra, Ghana. We&apos;re passionate
-              about making financial growth possible for every Ghanaian, regardless
-              of where they start.
-            </p>
+      {/* Why Trust Plus */}
+      <section className="py-16 sm:py-20 lg:py-28 bg-[#FFF9F9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateOnScroll animation="fade-in-up">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#52080D] mb-12 sm:mb-16 text-center">
+              Why Trust Plus
+            </h2>
+          </AnimateOnScroll>
 
-            <p>
-              Investing in Ghana traditionally meant opening different accounts with
-              different providers, filling out endless paperwork, and dealing with
-              complex processes that felt more like a chore than an opportunity. We
-              built Plus to change that.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <AnimateOnScroll animation="fade-in-up" delay={0} className="h-full">
+              <div className="bg-white rounded-2xl p-8 sm:p-10 h-full shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#961414] rounded-xl flex items-center justify-center">
+                    <svg
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#52080D] mb-2">
+                      SEC Regulated
+                    </h3>
+                    <p className="text-gray-500 text-base">
+                      Fully licensed and regulated by the Securities and Exchange
+                      Commission of Ghana.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
 
-            <p>
-              With Plus, you open one account and get access to mutual funds,
-              treasury bills, and US stocks — all from your phone. No paperwork, no
-              bank visits, no complexity. Just straightforward investing that actually
-              works for your life.
-            </p>
+            <AnimateOnScroll animation="fade-in-up" delay={150} className="h-full">
+              <div className="bg-white rounded-2xl p-8 sm:p-10 h-full shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#961414] rounded-xl flex items-center justify-center">
+                    <svg
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#52080D] mb-2">
+                      Good Partners
+                    </h3>
+                    <p className="text-gray-500 text-base">
+                      We work with trusted institutions like Stanbic, IC, and
+                      Databank to manage your investments.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in-up" delay={300} className="h-full">
+              <div className="bg-white rounded-2xl p-8 sm:p-10 h-full shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                <div className="flex items-start gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#961414] rounded-xl flex items-center justify-center">
+                    <svg
+                      className="h-6 w-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#52080D] mb-2">
+                      Security First
+                    </h3>
+                    <p className="text-gray-500 text-base">
+                      Built with your security and privacy in mind. Biometric
+                      login and encryption keep your account safe.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
 
-      {/* Why Trust Plus Section */}
-      <section className="py-16 sm:py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-burgundy-dark mb-4 sm:mb-6 text-center">
-            Why Trust Plus
-          </h2>
-          <p className="text-center text-gray-600 mb-12 sm:mb-16 max-w-2xl mx-auto">
-            Your money is too important for anything less than complete transparency
-            and security.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Trust Pillar 1: SEC Regulated */}
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-burgundy-light rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-burgundy"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-burgundy-dark mb-3">
-                SEC Regulated
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Licensed and regulated by the Securities and Exchange Commission of Ghana.
-              </p>
-            </div>
-
-            {/* Trust Pillar 2: Good Partners */}
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-burgundy-light rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-burgundy"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5.581m0 0H9m11.581 0a2 2 0 01-2 2H7a2 2 0 01-2-2m0 0H4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-burgundy-dark mb-3">
-                Good Partners
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We partner with Stanbic, IC Asset Managers, and Databank — all SEC-licensed fund managers.
-              </p>
-            </div>
-
-            {/* Trust Pillar 3: Security First */}
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-burgundy-light rounded-lg flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-burgundy"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-burgundy-dark mb-3">
-                Security First
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Built with your security and privacy in mind.
-              </p>
-            </div>
-          </div>
+      {/* By The Numbers */}
+      <section className="py-16 sm:py-20 lg:py-28 bg-[#52080D] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10"
+            style={{
+              background:
+                "radial-gradient(circle, #961414 0%, transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10"
+            style={{
+              background:
+                "radial-gradient(circle, #961414 0%, transparent 70%)",
+            }}
+          />
         </div>
-      </section>
 
-      {/* By The Numbers Section */}
-      <section className="py-16 sm:py-20 lg:py-28 bg-burgundy-dark">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12 sm:mb-16 text-center">
-            By The Numbers
-          </h2>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimateOnScroll animation="fade-in-up">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-14">
+              By The Numbers
+            </h2>
+          </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-            {/* Stat 1: Users */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
             <AnimateOnScroll animation="fade-in-up" delay={0}>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter target={100000} suffix="+" />
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-2">
+                  <AnimatedCounter
+                    target={100}
+                    suffix="K+"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white"
+                  />
                 </div>
-                <p className="text-burgundy-light">Registered Users</p>
+                <p className="text-white/60 text-base sm:text-lg font-medium">
+                  Users
+                </p>
               </div>
             </AnimateOnScroll>
 
-            {/* Stat 2: Downloads */}
-            <AnimateOnScroll animation="fade-in-up" delay={100}>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter target={150000} suffix="+" />
-                </div>
-                <p className="text-burgundy-light">App Downloads</p>
-              </div>
-            </AnimateOnScroll>
-
-            {/* Stat 3: US Stocks */}
             <AnimateOnScroll animation="fade-in-up" delay={200}>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter target={4000} suffix="+" />
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-2">
+                  <AnimatedCounter
+                    target={150}
+                    suffix="K+"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white"
+                  />
                 </div>
-                <p className="text-burgundy-light">US Stocks Available</p>
+                <p className="text-white/60 text-base sm:text-lg font-medium">
+                  Downloads
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in-up" delay={400}>
+              <div className="text-center">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-2">
+                  <AnimatedCounter
+                    target={4000}
+                    suffix="+"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white"
+                  />
+                </div>
+                <p className="text-white/60 text-base sm:text-lg font-medium">
+                  US Stocks
+                </p>
               </div>
             </AnimateOnScroll>
           </div>
@@ -185,25 +230,51 @@ export default function AboutPage() {
       {/* Contact Section */}
       <section className="py-16 sm:py-20 lg:py-28 bg-white">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-burgundy-dark mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#52080D] mb-12 sm:mb-16">
             Get in Touch
           </h2>
 
           <div className="space-y-8">
             <div>
-              <h3 className="text-lg font-semibold text-burgundy-dark mb-2">
+              <h3 className="text-lg font-semibold text-[#52080D] mb-2">
                 Email
               </h3>
               <a
                 href="mailto:support@plusapp.online"
-                className="text-burgundy hover:text-burgundy-dark transition-colors text-lg"
+                className="text-[#961414] hover:text-[#52080D] transition-colors text-lg"
               >
                 support@plusapp.online
               </a>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-burgundy-dark mb-2">
+              <h3 className="text-lg font-semibold text-[#52080D] mb-2">
+                Phone
+              </h3>
+              <div className="space-y-1">
+                <a
+                  href="tel:+233201673720"
+                  className="block text-[#961414] hover:text-[#52080D] transition-colors text-lg"
+                >
+                  020 167 3720
+                </a>
+                <a
+                  href="tel:+233532478602"
+                  className="block text-[#961414] hover:text-[#52080D] transition-colors text-lg"
+                >
+                  0532 478 602
+                </a>
+                <a
+                  href="tel:+233531167085"
+                  className="block text-[#961414] hover:text-[#52080D] transition-colors text-lg"
+                >
+                  0531 167 085
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-[#52080D] mb-2">
                 Address
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -216,7 +287,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-burgundy-dark mb-4">
+              <h3 className="text-lg font-semibold text-[#52080D] mb-4">
                 Follow Us
               </h3>
               <div className="flex gap-6 justify-center">
@@ -224,7 +295,7 @@ export default function AboutPage() {
                   href="https://instagram.com/investwithplus"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-burgundy hover:text-burgundy-dark transition-colors"
+                  className="text-[#961414] hover:text-[#52080D] transition-colors"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -239,7 +310,7 @@ export default function AboutPage() {
                   href="https://youtube.com/@investwithplus"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-burgundy hover:text-burgundy-dark transition-colors"
+                  className="text-[#961414] hover:text-[#52080D] transition-colors"
                 >
                   <span className="sr-only">YouTube</span>
                   <svg
@@ -247,26 +318,22 @@ export default function AboutPage() {
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M19.615 3.175c-3.673-1.73-9.865-1.73-13.538 0C3.036 4.147 2.51 7.557 2.51 12c0 4.443.526 7.853 3.567 8.825 3.673 1.73 9.865 1.73 13.538 0 3.041-.972 3.567-4.382 3.567-8.825 0-4.443-.526-7.853-3.567-8.825zM9.75 15.02V8.98l5.79 3.02-5.79 3.02z" />
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
                 <a
                   href="https://tiktok.com/@investwithplus"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-burgundy hover:text-burgundy-dark transition-colors"
+                  className="text-[#961414] hover:text-[#52080D] transition-colors"
                 >
                   <span className="sr-only">TikTok</span>
                   <svg
                     className="w-6 h-6"
+                    fill="currentColor"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
                   >
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                   </svg>
                 </a>
               </div>
@@ -274,9 +341,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Download CTA */}
-      <DownloadCTA />
-    </>
+    </div>
   );
 }

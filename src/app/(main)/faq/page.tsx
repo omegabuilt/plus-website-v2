@@ -82,7 +82,7 @@ const faqItems: FAQItem[] = [
     category: 'Support',
     question: 'How do I contact support?',
     answer:
-      'Email us at support@plusapp.online or call us on 020 167 3720.',
+      'Email us at support@plusapp.online or call us on 020 167 3720, 0532 478 602, or 0531 167 085.',
   },
 ];
 
