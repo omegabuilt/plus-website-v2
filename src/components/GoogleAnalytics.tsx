@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 declare global {
@@ -9,23 +9,36 @@ declare global {
   }
 }
 
-export function GoogleAnalytics({ gaId }: { gaId: string }) {
+function GoogleAnalyticsTracker({ gaId }: { gaId: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     if (!window.gtag) return;
 
-    const url = searchParams.toString()
-      ? `${pathname}?${searchParams.toString()}`
-      : pathname;
+    // Small delay to ensure document.title has updated after route change
+    const timeout = setTimeout(() => {
+      const url = searchParams.toString()
+        ? `${pathname}?${searchParams.toString()}`
+        : pathname;
 
-    window.gtag("event", "page_view", {
-      page_path: url,
-      page_title: document.title,
-      page_location: window.location.href,
-    });
+      window.gtag("config", gaId, {
+        page_path: url,
+        page_title: document.title,
+        page_location: window.location.href,
+      });
+    }, 100);
+
+    return () => clearTimeout(timeout);
   }, [pathname, searchParams, gaId]);
 
   return null;
+}
+
+export function GoogleAnalytics({ gaId }: { gaId: string }) {
+  return (
+    <Suspense fallback={null}>
+      <GoogleAnalyticsTracker gaId={gaId} />
+    </Suspense>
+  );
 }
