@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
-// Replace with your actual GTM container ID once you create one at tagmanager.google.com
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 const GA_ID = "G-HEHCYY5FTJ";
 
 export const metadata: Metadata = {
@@ -97,41 +96,13 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_ID}');
+              gtag('config', '${GA_ID}', { send_page_view: false });
             `,
           }}
         />
-
-        {/* Google Tag Manager - head script */}
-        {GTM_ID && (
-          <Script
-            id="gtm-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','${GTM_ID}');
-              `,
-            }}
-          />
-        )}
       </head>
       <body className="font-montserrat text-gray-800 bg-white">
-        {/* Google Tag Manager - noscript fallback */}
-        {GTM_ID && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        )}
-
+        <GoogleAnalytics gaId={GA_ID} />
         {children}
       </body>
     </html>

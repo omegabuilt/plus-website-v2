@@ -37,18 +37,18 @@ const nextConfig = {
             value: [
               // Only allow resources from your own origin by default
               "default-src 'self'",
-              // Scripts: self + inline (Next.js needs it) + eval (Next.js dev)
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
+              // Scripts: self + inline (Next.js needs it) + eval (Next.js dev) + GA4
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://cdnjs.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.googletagmanager.com",
               // Styles: self + inline (Tailwind/Next.js needs it) + Google Fonts
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              // Images: self + data URIs + YouTube thumbnails
-              "img-src 'self' data: https://img.youtube.com https://www.googletagmanager.com https://www.google-analytics.com",
+              // Images: self + data URIs + YouTube thumbnails + GA4
+              "img-src 'self' data: https://img.youtube.com https://www.googletagmanager.com https://*.google-analytics.com https://*.googletagmanager.com",
               // Fonts: self + Google Fonts CDN
               "font-src 'self' https://fonts.gstatic.com",
               // Frames: only YouTube embeds
               "frame-src https://www.youtube.com",
-              // Connections: self + YouTube + Google analytics (if added later)
-              "connect-src 'self' https://www.youtube.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com",
+              // Connections: self + YouTube + GA4 (*.google-analytics.com covers region1/region2/etc subdomains)
+              "connect-src 'self' https://www.youtube.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com",
               // Block all object/embed elements
               "object-src 'none'",
               // Restrict base URI to self

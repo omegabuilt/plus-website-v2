@@ -86,20 +86,17 @@ export function appendUTMToUrl(baseUrl: string): string {
 }
 
 /**
- * Fire a GTM/dataLayer event for download clicks.
- * This lets you set up a Google Ads conversion based on the event.
+ * Fire a GA4 event for download clicks via gtag.
  */
 export function trackDownloadClick(store: "google_play" | "app_store") {
   if (typeof window === "undefined") return;
 
   const params = getStoredUTMParams();
 
-  // Push to GTM dataLayer
-  (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer =
-    (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer || [];
-  (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer.push({
-    event: "download_click",
-    store: store,
-    ...params,
-  });
+  if (typeof (window as unknown as { gtag: (...args: unknown[]) => void }).gtag === "function") {
+    (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", "download_click", {
+      store: store,
+      ...params,
+    });
+  }
 }
