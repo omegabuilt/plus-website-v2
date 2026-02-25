@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
-const GA_ID = "G-HEHCYY5FTJ";
+const GA_ID = "G-S8V3CFQSJZ";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.plusapp.online"),
